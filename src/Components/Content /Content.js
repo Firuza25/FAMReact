@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel } from 'antd';
-import '/Users/firuza/Desktop/reactPractice/lesson4/lecture4/src/Components/Content /contnent.css'; 
+import '/Users/firuza/Desktop/reactPractice/ProjectReactEvent/lecture4/src/Components/Content /contnent.css'; 
 const Content = () => (
   <div style={{ textAlign: 'center', marginBottom: '20px' }}>
     <h2>This Week</h2> {}
