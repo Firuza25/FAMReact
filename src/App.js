@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import credentials from './Components/DB/credentials';
 import Header from './Components/Header/Header';
@@ -18,6 +18,7 @@ function App() {
   const [error, setError] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false); 
   const [showAccount, setShowAccount] = useState(false); 
+
 
   const handleLogin = useCallback(() => {
     const foundUser = credentials.find(
@@ -47,15 +48,6 @@ function App() {
   const closeModal = () => {
     setIsModalVisible(false);
   };
-
-  const openAccount = () => {
-    setShowAccount(true);
-  };
-
-  const closeAccount = () => {
-    setShowAccount(false); 
-  };
-
   return (
     <Router>
     <div className="App">

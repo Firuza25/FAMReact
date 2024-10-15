@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+const Account = ({ username }) => {
+  const [welcomeAccount, setWelcomeAccount] = useState('');
 
-const Account = ({ username}) => (
-  <div style={{ padding: '20px' }}>
-    <h2>Мой аккаунт: {username}</h2>
+  useEffect(() => {
+    setWelcomeAccount(`Hello ${username}!`);
+    console.log("I'm working"); 
+  }, [username]);
 
-  </div>
-);
-
+  return (
+    <div style={{ padding: '20px' }}>
+      <h2>{welcomeAccount}</h2>
+    </div>
+  );
+};
 
 export default Account;
