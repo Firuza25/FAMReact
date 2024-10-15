@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Flex } from "antd";
+import theatersData from "../../DB/theatersData";
 const { Meta } = Card;
 
 const Theaters = () => {
@@ -13,58 +14,23 @@ const Theaters = () => {
           marginTop: "60px",
         }}
       >
-        <Card
-          hoverable
-          style={{ width: 240, height: "auto" }}
-          cover={
-            <img
-              alt="th1"
-              src="https://ticketon.kz/media/upload/51121u54478_500kh700-9.png"
-            />
-          }
-        >
-          <Meta
-          title={'Балет «Спящая красавица» в Темиртау'}
-            description="21 октября, 19:00
-Балет «Спящая красавица» в ...
-ТДК Темиртау"
-          />
-        </Card>
-
-        <Card
-          hoverable
-          style={{ width: 240 }}
-          cover={
-            <img
-              alt="th2"
-              src="https://ticketon.kz/media/upload/50909u54364_04fdf181-265b-41c9-a778-8ec89f7484ec.jpg"
-            />
-          }>
+        {theatersData.map((theater, index) => (
+          <Card
+            key={index}
+            hoverable
+            style={{ width: 240, height: "auto" }}
+            cover={<img alt={theater.title} src={theater.image} />}
+          >
             <Meta
-          title={'ОРКЕСТР МЕЧТЫ. МЕДЬ'}
-            description="3, 4 ноября
-ОРКЕСТР МЕЧТЫ. МЕДЬ
-Almaty theatre"
-          />
-          </Card>
-
-        <Card
-          hoverable
-          style={{ width: 240 }}
-          cover={
-            <img
-              alt="cinema3"
-              src="https://ticketon.kz/media/upload/51847u57013_chas-tishiny-2024-afisha.jpg"
+              title={theater.title}
+              description={`${theater.date}\n${theater.description}`} // Включаем дату в описание
             />
-          }
-        >
-
-<Meta
-          title={'Час тишины (2024)'}
-            description="14 октября, 20:35, от 1 600 тг.
-Час тишины (2024)"
-          />
-        </Card>
+            <div style={{ marginTop: 8 }}>
+              <span style={{ fontWeight: 'bold' }}>Город: </span>
+              <span>{theater.city}</span>
+            </div>
+          </Card>
+        ))}
       </Flex>
     </div>
   );

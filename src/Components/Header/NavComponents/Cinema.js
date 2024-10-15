@@ -1,7 +1,10 @@
 import React from "react";
 import { Card, Flex } from "antd";
+import movieData from "../../DB/movieData";
+
 
 const { Meta } = Card;
+
 const Cinema = () => {
   return (
     <div>
@@ -13,70 +16,23 @@ const Cinema = () => {
           marginTop: "60px",
         }}
       >
-        <Card
-          hoverable
-          style={{ width: 240, height: "auto" }}
-          cover={
-            <img
-              alt="cinema1"
-              src="https://ticketon.kz/media/upload/46135u56102_dzhoker-bezumie-na-dvoikhtzhzh.jpg"
-            />
-          }
-        >
-          <Meta
-          title={'Джокер: Безумие на двоих'}
-            description="14 октября, 10:35, от 600 тг.
-Джокер: Безумие на двоих (2024)"
-          />
-        <div style={{ marginTop: 8 }}>
-          <span style={{ fontWeight: 'bold' }}>Город: </span>
-          <span>Нур-Султан</span>
-          </div>
-        </Card>
-
-        <Card
-          hoverable
-          style={{ width: 240 }}
-          cover={
-            <img
-              alt="cinema2"
-              src="https://ticketon.kz/media/upload/49669u56439_500_700_white_667bc522b9cef-2.jpg"
-            />
-          }>
+        {movieData.map((movie, index) => (
+          <Card
+            key={index}
+            hoverable
+            style={{ width: 240, height: "auto" }}
+            cover={<img alt={movie.title} src={movie.image} />}
+          >
             <Meta
-          title={'Граф Монте-Кристо (2024)'}
-            description="14 октября, 14:00, от 1 200 тг.
-Граф Монте-Кристо (2024)"
-          />
-
-<div style={{ marginTop: 8 }}>
-          <span style={{ fontWeight: 'bold' }}>Город: </span>
-          <span>Алматы</span>
-          </div>
-          </Card>
-
-        <Card
-          hoverable
-          style={{ width: 240 }}
-          cover={
-            <img
-              alt="cinema3"
-              src="https://ticketon.kz/media/upload/51847u57013_chas-tishiny-2024-afisha.jpg"
+              title={movie.title}
+              description={movie.description}
             />
-          }
-        >
-
-<Meta
-          title={'Час тишины (2024)'}
-            description="14 октября, 20:35, от 1 600 тг.
-Час тишины (2024)"
-          />
-
-<div style={{ marginTop: 8 }}>
-          <span style={{ fontWeight: 'bold' }}>Город: </span>
-          <span>Семей</span>
-          </div>
-        </Card>
+            <div style={{ marginTop: 8 }}>
+              <span style={{ fontWeight: 'bold' }}>Город: </span>
+              <span>{movie.city}</span>
+            </div>
+          </Card>
+        ))}
       </Flex>
     </div>
   );
