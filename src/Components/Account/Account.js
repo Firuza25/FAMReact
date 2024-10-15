@@ -8,4 +8,5 @@ const Account = ({ username}) => (
   </div>
 );
 
+
 export default Account;
