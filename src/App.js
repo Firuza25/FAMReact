@@ -58,43 +58,52 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <Header 
-          isLoggedIn={isLoggedIn} 
-          showLoginModal={showModal} 
-          openAccount={openAccount} 
+    <div className="App">
+      <Header 
+        isLoggedIn={isLoggedIn} 
+        showLoginModal={showModal} 
+      />
+      
+      <Modal
+        title="Вход"
+        visible={isModalVisible}
+        onCancel={closeModal}
+        footer={null}
+      >
+        <LoginForm
+          username={username}
+          password={password}
+          setUsername={setUsername}
+          setPassword={setPassword}
+          handleLogin={handleLogin}
+          error={error}
         />
-        <Modal
-          title="Вход"
-          visible={isModalVisible}
-          onCancel={closeModal}
-          footer={null}
-        >
-          <LoginForm
-            username={username}
-            password={password}
-            setUsername={setUsername}
-            setPassword={setPassword}
-            handleLogin={handleLogin}
-            error={error}
-          />
-        </Modal>
+      </Modal>
 
-        {showAccount ? (
-          <Account username={username} closeAccount={closeAccount} />
+      <Routes>
+        <Route path="/cinema" element={<Cinema />} />
+        <Route path="/theaters" element={<Theaters />} />
+        <Route path="/sports" element={<Sports />} />
+        <Route path="/home" element={<Content />} /> 
+        <Route path="/" element={<Content />} />
+        
+        {isLoggedIn ? (
+          <>
+            <Route path="/myAccount" element={<Account username={username} />} />
+          </>
         ) : (
-          <Routes>
-            <Route path="/cinema" element={<Cinema />} />
-            <Route path="/theaters" element={<Theaters />} />
-            <Route path="/sports" element={<Sports />} />
-            <Route path="/home" element={<Content />} /> 
-            <Route path="/" element={<Content />} /> 
-            <Route path="/myAccount" element={<Account/>} />
-          </Routes>
+          <Route path="/login" element={<LoginForm 
+            username={username} 
+            password={password} 
+            setUsername={setUsername} 
+            setPassword={setPassword} 
+            handleLogin={handleLogin} 
+            error={error} />} />
         )}
-      </div>
-    </Router>
-  );
+      </Routes>
+    </div>
+  </Router>
+);
 }
 
 export default App;

@@ -4,9 +4,6 @@ import './header.css';
 
 const Header = ({ isLoggedIn, showLoginModal, openAccount }) => {
   const navigate = useNavigate();
-
-
-  
   return (
     <header className="header">
       <div className="logo" onClick={() => navigate('/home')}>  
