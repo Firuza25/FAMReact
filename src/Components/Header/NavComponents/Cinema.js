@@ -28,6 +28,10 @@ const Cinema = () => {
             description="14 октября, 10:35, от 600 тг.
 Джокер: Безумие на двоих (2024)"
           />
+        <div style={{ marginTop: 8 }}>
+          <span style={{ fontWeight: 'bold' }}>Город: </span>
+          <span>Нур-Султан</span>
+          </div>
         </Card>
 
         <Card
@@ -44,6 +48,11 @@ const Cinema = () => {
             description="14 октября, 14:00, от 1 200 тг.
 Граф Монте-Кристо (2024)"
           />
+
+<div style={{ marginTop: 8 }}>
+          <span style={{ fontWeight: 'bold' }}>Город: </span>
+          <span>Алматы</span>
+          </div>
           </Card>
 
         <Card
@@ -62,6 +71,11 @@ const Cinema = () => {
             description="14 октября, 20:35, от 1 600 тг.
 Час тишины (2024)"
           />
+
+<div style={{ marginTop: 8 }}>
+          <span style={{ fontWeight: 'bold' }}>Город: </span>
+          <span>Семей</span>
+          </div>
         </Card>
       </Flex>
     </div>
