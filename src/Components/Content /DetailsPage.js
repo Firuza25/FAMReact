@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import React, {useMemo, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from 'antd'; 
 import { ArrowLeftOutlined } from '@ant-design/icons'; 
@@ -31,7 +31,7 @@ const DetailsPage = () => {
     }, [category, id]);
 
     const handleBackButtonClick = useCallback(() => {
-        console.log(`Backwards button clicked for ${item.id}: ${item.title}`)
+        console.log(`назад`)
         navigate(`/${category}`);
     }, [category, navigate]);
 

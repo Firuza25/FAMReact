@@ -1,40 +1,38 @@
 import React from 'react';
-import { Carousel, Card, Row, Col } from 'antd';
+import { Carousel} from 'antd';
 import './contnent.css'; 
-import ContentCard from '../Card/ContentCard';
-import SearchingCities from '../Header/SearchingBar/searchingCities';
 
 const Content = () => (
-  <div>
-  <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-    <h2>This Week</h2> {}
+  <div >
+  <div style={{ textAlign: 'center' }}>
+    <h2>This Week</h2> 
     <Carousel autoplay>
       <div>
         <img 
           className="carousel-image" 
-          src="https://ticketon.kz/files/media/image.psd.jpg" 
+          src="https://ticketon.kz/media/upload/46185u56103_whatsapp-image-2024-09-23-at-11-49-28.jpeg" 
           alt="Description 1" 
         />
       </div>
       <div>
         <img 
           className="carousel-image" 
-          src="path/to/your/image2.jpg" 
+          src="https://api.galaconcert.kz/storage/shows/242/conversions/main.webp" 
           alt="Description 2" 
         />
       </div>
       <div>
         <img 
           className="carousel-image" 
-          src="path/to/your/image3.jpg" 
+          src="https://ticketon.kz/files/media/eventandrea-bocelli-vse-khity-astanautm_source=web&utm_medium=slaider&utm_campaign=andrea-bocelli-vse-khity-astana.png" 
           alt="Description 3" 
         />
       </div>
       <div>
         <img 
           className="carousel-image" 
-          src="path/to/your/image4.jpg" 
-          alt="Description 4" 
+          src="https://ticketon.kz/files/media/norvi-ticketon-resize-1448x440.jpg" 
+          alt="Description 4"
         />
       </div>
     </Carousel>

@@ -1,17 +1,7 @@
- /* App.css */
 .App {
-    background-color: #E0CFB1; /* Set background color */
-    min-height: 100vh; /* Ensure it covers the full height of the viewport */
+    background-color: #E0CFB1; 
+    min-height: 100vh; 
   }
   
-  .header-navigation {
-    display: flex;
-    justify-content: center; /* Center the navigation */
-    gap: 20px; /* Add space between the buttons */
-  }
-  
-  .header-button {
-    background-color: #1890ff; /* Button color */
-    color: white; /* Text color */
-  }
+ 
   

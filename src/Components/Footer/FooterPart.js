@@ -9,20 +9,20 @@ const { Text } = Typography;
 const FooterTemp = () => {
     return (
         <div>
-            <Footer style={{ backgroundColor: '#001529', color: 'white', padding: '20px' }}>
+            <Footer style={{ backgroundColor: '#faf3c5', color: '#8f0b0b', padding: '40px', }}>
             <Row justify="space-between">
                 <Col>
-                    <Text style={{ color: 'white' }}>© {new Date().getFullYear()} EventsLive. All rights reserved.</Text>
+                    <Text style={{ color: '#8f0b0b' }}>© {new Date().getFullYear()} NextEvent</Text>
                 </Col>
                 <Col>
                     <Space size="large">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: '#8f0b0b' }}>
                             <FacebookOutlined />
                         </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style={{ color: '#8f0b0b' }}>
                             <TwitterOutlined />
                         </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: '#8f0b0b' }}>
                             <InstagramOutlined />
                         </a>
                     </Space>

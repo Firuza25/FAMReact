@@ -17,19 +17,24 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-right: 10px; /* Space between input and button */
+    margin-right: 10px; 
+    background-color: rgba(254, 254, 255, 0.5);
+    border-radius: 20px;
+    width: 250px;
 }
 
 .search_form button {
     padding: 10px 15px;
     font-size: 16px;
-    color: white;
-    background-color: #007bff; /* Bootstrap primary color */
     border: none;
+    background-color: rgba(254, 254, 255, 0);
     border-radius: 5px;
     cursor: pointer;
+    color: #8f0b0b;
 }
 
 .search_form button:hover {
-    background-color: #0056b3; /* Darker shade for hover */
+    background-color:#8f0b0b; 
+    border-radius: 20px;
+    color: antiquewhite;
 }

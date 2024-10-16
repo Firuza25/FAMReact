@@ -1,8 +1,6 @@
 import React from 'react';
-import { Carousel, Card, Row, Col } from 'antd';
 import './contnent.css'; 
 import ContentCard from '../Card/ContentCard';
-import SearchingCities from '../Header/SearchingBar/searchingCities';
 
 const SearchingResults = ({ searchResults }) => (
   <div>

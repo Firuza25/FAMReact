@@ -10,12 +10,12 @@ import Theaters from './Components/Header/NavComponents/Theaters';
 import Sports from './Components/Header/NavComponents/Sports';
 import DetailsPage from './Components/Content /DetailsPage';
 import { Modal } from 'antd';
-// import { Layout } from 'antd';
+
 import SearchingCities from './Components/Header/SearchingBar/searchingCities';
 
 import './App.css';
 import FooterPart from './Components/Footer/FooterPart';
-import SearchingResults from './Components/Content /SearchingResults';
+
 
 function App() { 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,7 +23,6 @@ function App() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false); 
-  const [showAccount, setShowAccount] = useState(false); 
   const [searchResults, setSearchResults] = useState([]); // State for search results
 
   const memoizedSearchResults = useMemo(() => searchResults, [searchResults]);
@@ -38,7 +37,7 @@ function App() {
       setError('');
       setIsModalVisible(false); 
     } else {
-      setError('Неверные данные для входа. Попробуйте снова.');
+      setError('Invalid login information. Try again.');
     }
   }, [username, password]);
   
@@ -70,7 +69,7 @@ function App() {
       {/* <SearchingResults searchResults={searchResults} />  */}
       
       <Modal
-        title="Вход"
+        title="Login"
         visible={isModalVisible}
         onCancel={closeModal}
         footer={null}

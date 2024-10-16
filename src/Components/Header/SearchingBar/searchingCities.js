@@ -4,11 +4,8 @@ import cinemaData from '../../DB/movieData';
 import theatreData from '../../DB/theatersData';
 import sportsData from '../../DB/sportData';
 import './searchingBar.css'; 
-import { Card, Row, Col, Flex } from "antd";
+import {Row, Flex } from "antd";
 import ContentCard from "../../Card/ContentCard";
-
-const { Meta } = Card;
-
 
 
 const SearchingCitiesTemp = () => {
@@ -21,7 +18,6 @@ const SearchingCitiesTemp = () => {
     
     const handleSearch = useCallback((event) => {
         event.preventDefault();
-
         const filteredResults = allData.filter((item) => {
             return item.city && item.city.toLowerCase().includes(searchCity.toLowerCase());
         });
@@ -37,7 +33,7 @@ const SearchingCitiesTemp = () => {
                 return item.city && item.city.toLowerCase().includes(searchCity.toLowerCase());
             });
             setResults(filteredResults);
-            console.log("Filtering data by search!")
+            console.log("идет фильтация по назывванию городов")
         }
     }, [searchCity]); 
 
@@ -51,13 +47,12 @@ const SearchingCitiesTemp = () => {
                 placeholder="search in the cities"
                 className="seach_input"
                 onChange={(e) => {setSearchCity(e.target.value)}} />
-                    
                 
-                <button type="submit">Поиск</button>
+                <button type="submit">search</button>
             </form>
 
             <div style={{ marginTop: "60px" }}>
-        <Row gutter={[30, 30]} justify="center">
+        <Row gap={30} justify="center">
         <Flex
                 style={{
                   flexDirection: "row",
@@ -67,7 +62,6 @@ const SearchingCitiesTemp = () => {
                 }}
               >
             {results.length > 0 ? (
-                
                 results.map((item, index) => (
                     <ContentCard 
                     index = {index} 
@@ -81,7 +75,7 @@ const SearchingCitiesTemp = () => {
                 ))
                 
             ) : (
-                <p>No results found for "{searchCity}".</p> 
+                <p> {searchCity}</p> 
             )}
             </Flex>
         </Row>

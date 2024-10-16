@@ -1,9 +1,9 @@
 import React, {useMemo} from 'react';
 import { useNavigate} from 'react-router-dom';
 import './header.css'; 
-import SearchingCities from './SearchingBar/searchingCities';
 
-const Header = ({ isLoggedIn, showLoginModal, openAccount, setSearchResults }) => {
+
+const Header = ({ isLoggedIn, showLoginModal, openAccount }) => {
   const navigate = useNavigate();
 
   const navigationButtons = useMemo(() => {
@@ -23,25 +23,23 @@ const Header = ({ isLoggedIn, showLoginModal, openAccount, setSearchResults }) =
         <img src="https://icons.veryicon.com/png/o/miscellaneous/face-monochrome-icon/calendar-249.png" alt="Logo" className="logo-img" /> {}
         <h1>NextEvent</h1>
       </div>
-      {/* <div>
-        <SearchingCities />
-      </div> */}
-      {/* <div className="search-bar">
-        <SearchingCities setSearchResults={setSearchResults} />
-      </div> */}
+
 
       <nav className="navigation">
       {navigationButtons}
       </nav>
 
+
+
+
       <div className="login-section" onClick={() => navigate('/myAccount')}>
         {isLoggedIn ? (
           <button onClick={openAccount} className="account-button">
-            Мой аккаунт
+            My profile
           </button>
         ) : (
           <button onClick={showLoginModal}  className="login-button">
-            Войти
+            Login
           </button>
         )}
       </div>

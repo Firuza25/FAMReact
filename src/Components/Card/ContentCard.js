@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from "react";
-import { Card, Button } from "antd";
+import { Card, Button, Flex } from "antd";
 import { useNavigate } from 'react-router-dom';
 
 const { Meta } = Card;
@@ -13,6 +13,7 @@ const ContentCard = (props) => {
     }, [props.title, props.id, props.category, navigate]);
 
     return (
+      <div style={{display:'flex', flexWrap:'wrap'}}>
         <Card
             key={props.index}
             hoverable
@@ -30,6 +31,8 @@ const ContentCard = (props) => {
             <Button type="primary" onClick={handleButtonClick}>Купить билет</Button>
 
           </Card>
+          </div>
+  
     )
 }
 

@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
 body{
   margin: 0;
   padding:0;
@@ -17,12 +21,15 @@ body{
     align-items: center;
     font-size: 15px;
     cursor: pointer;
+    color: #faf3c5;
+    font-family: "Cormorant Garamond", serif;
   }
   
   .logo-img {
-    width: 30px; 
+    width: 55px; 
     margin-right: 5px; 
     cursor: pointer;
+    
   }
   
   .navigation {
@@ -40,6 +47,7 @@ body{
     border-radius: 25px; 
     transition: background-color 0.3s; 
     font-size: 20px;
+    color: #faf3c5;
 
   }
   
@@ -49,3 +57,28 @@ body{
   }
   
   
+  .login-button{
+    border: none;
+    font-size: 20px;
+    background:none;
+    color: #faf3c5; ;
+    margin-right: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+
+  .account-button{
+    border: none;
+    font-size: 20px;
+    background:none;
+    color: #faf3c5; 
+    margin-right: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .account-button:hover{
+   background-color: #faf3c5;
+   color: #8f0b0b;
+
+  }
