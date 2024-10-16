@@ -1,8 +1,13 @@
 import React from 'react';
-import { Carousel } from 'antd';
-import '/Users/firuza/Desktop/reactPractice/ProjectReactEvent/lecture4/src/Components/Content /contnent.css'; 
+import { Carousel, Card, Row, Col } from 'antd';
+import './contnent.css'; 
+import ContentCard from '../Card/ContentCard';
+import SearchingCities from '../Header/SearchingBar/searchingCities';
+
 const Content = () => (
-  <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+  <div>
+  
+    (<div style={{ textAlign: 'center', marginBottom: '20px' }}>
     <h2>This Week</h2> {}
     <Carousel autoplay>
       <div>
@@ -34,6 +39,9 @@ const Content = () => (
         />
       </div>
     </Carousel>
+  </div>)
+  
   </div>
+   
 );
 export default Content;

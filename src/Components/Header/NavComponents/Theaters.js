@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, Flex } from "antd";
 import theatersData from "../../DB/theatersData";
+import ContentCard from "../../Card/ContentCard";
+
 const { Meta } = Card;
 
 const Theaters = () => {
@@ -15,21 +17,15 @@ const Theaters = () => {
         }}
       >
         {theatersData.map((theater, index) => (
-          <Card
-            key={index}
-            hoverable
-            style={{ width: 240, height: "auto" }}
-            cover={<img alt={theater.title} src={theater.image} />}
-          >
-            <Meta
-              title={theater.title}
-              description={`${theater.date}\n${theater.description}`} // Включаем дату в описание
-            />
-            <div style={{ marginTop: 8 }}>
-              <span style={{ fontWeight: 'bold' }}>Город: </span>
-              <span>{theater.city}</span>
-            </div>
-          </Card>
+          <ContentCard 
+          index = {index} 
+          title = {theater.title} 
+          image = {theater.image} 
+          description = {theater.description} 
+          city = {theater.city}
+          id={theater.id} 
+          category="theaters"
+          />
         ))}
       </Flex>
     </div>
