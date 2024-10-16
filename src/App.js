@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect, useMemo} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import credentials from './Components/DB/credentials';
 import Header from './Components/Header/Header';
-import Content from './Components/Content /Content';
+import Content from './Components/Content /HomeContent';
 import LoginForm from './Components/Content /LoginForm';
 import Account from './Components/Account/Account';
 import Cinema from './Components/Header/NavComponents/Cinema';
@@ -117,11 +117,6 @@ function App() {
 
   <FooterPart />
   </div>
-    
-
-
-  
-
 );
 }
 
