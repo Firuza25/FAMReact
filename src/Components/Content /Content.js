@@ -6,8 +6,7 @@ import SearchingCities from '../Header/SearchingBar/searchingCities';
 
 const Content = () => (
   <div>
-  
-    (<div style={{ textAlign: 'center', marginBottom: '20px' }}>
+  <div style={{ textAlign: 'center', marginBottom: '20px' }}>
     <h2>This Week</h2> {}
     <Carousel autoplay>
       <div>
@@ -39,7 +38,7 @@ const Content = () => (
         />
       </div>
     </Carousel>
-  </div>)
+  </div>
   
   </div>
    

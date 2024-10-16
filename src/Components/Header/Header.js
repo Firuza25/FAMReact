@@ -1,10 +1,22 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useMemo} from 'react';
+import { useNavigate} from 'react-router-dom';
 import './header.css'; 
 import SearchingCities from './SearchingBar/searchingCities';
 
 const Header = ({ isLoggedIn, showLoginModal, openAccount, setSearchResults }) => {
   const navigate = useNavigate();
+
+  const navigationButtons = useMemo(() => {
+    return (
+      <>
+        <button onClick={() => navigate('/cinema')}>Cinema</button>
+        <button onClick={() => navigate('/theaters')}>Theaters</button>
+        <button onClick={() => navigate('/sports')}>Sports</button>
+        <button onClick={() => navigate('/home')}>Home</button>
+      </>
+    );
+  }, [navigate]); 
+
   return (
     <header className="header">
       <div className="logo" onClick={() => navigate('/home')}>  
@@ -19,10 +31,7 @@ const Header = ({ isLoggedIn, showLoginModal, openAccount, setSearchResults }) =
       </div> */}
 
       <nav className="navigation">
-        <button onClick={() => navigate('/cinema')}>Cinema</button>
-        <button onClick={() => navigate('/theaters')}>Theaters</button>
-        <button onClick={() => navigate('/sports')}>Sports</button>
-        <button onClick={() => navigate('/home')}></button>
+      {navigationButtons}
       </nav>
 
       <div className="login-section" onClick={() => navigate('/myAccount')}>

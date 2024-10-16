@@ -14,21 +14,21 @@ const { Meta } = Card;
 const SearchingCitiesTemp = () => {
     const [searchCity, setSearchCity] = useState("")
     const [results, setResults] = useState([]);
+
     const allData = useMemo(() => {
         return [...cinemaData, ...theatreData, ...sportsData];
     }, [cinemaData, theatreData, sportsData]);
-    const handleSearch = (event) => {
-        event.preventDefault(); 
-        
+    
+    const handleSearch = useCallback((event) => {
+        event.preventDefault();
 
         const filteredResults = allData.filter((item) => {
-            if(searchCity){
-                return item.city.toLowerCase().includes(searchCity.toLowerCase());
-            }
-            
-        })
-        setResults(filteredResults)
-    }
+            return item.city && item.city.toLowerCase().includes(searchCity.toLowerCase());
+        });
+
+        setResults(filteredResults);
+    }, [allData, searchCity]);
+
     useEffect(() => {
         if (!searchCity.trim()) {
             setResults([]); 
@@ -81,7 +81,7 @@ const SearchingCitiesTemp = () => {
                 ))
                 
             ) : (
-                <p>No results found for "{searchCity}".</p> // Message when no results are found
+                <p>No results found for "{searchCity}".</p> 
             )}
             </Flex>
         </Row>

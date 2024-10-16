@@ -67,7 +67,7 @@ function App() {
         setSearchResults={setSearchResults}
       />
       <SearchingCities setSearchResults={setSearchResults} /> 
-      <SearchingResults searchResults={searchResults} /> 
+      {/* <SearchingResults searchResults={searchResults} />  */}
       
       <Modal
         title="Вход"
