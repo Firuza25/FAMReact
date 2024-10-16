@@ -4,8 +4,6 @@ import movieData from "../../DB/movieData";
 import ContentCard from "../../Card/ContentCard";
 
 
-const { Meta } = Card;
-
 const Cinema = () => {
   return (
     <div>
