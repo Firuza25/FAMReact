@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { Form, Input, Button } from 'antd';
 import { context } from '../../App';
 import { useNavigate } from 'react-router-dom';
+import "./contnent.css"
 
 const LoginForm = () => {
 
@@ -53,7 +54,7 @@ const LoginForm = () => {
     }, [username, password]);
 
   return(
-  <div>
+  <div className="login-box">
     <h2>Login</h2>
     <Form
       name="login-form"
