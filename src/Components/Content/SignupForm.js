@@ -91,7 +91,7 @@ const SignupForm = () => {
     
 
   return(
-  <div>
+  <div className="login-box">
     <h2>Signup</h2>
     <Form
       name="login-form"

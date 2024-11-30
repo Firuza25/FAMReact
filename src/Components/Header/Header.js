@@ -2,6 +2,7 @@ import React, {useContext, useMemo} from 'react';
 import { useNavigate} from 'react-router-dom';
 import './header.css'; 
 import { context } from '../../App';
+import SearchBar from './SearchingBar/SearchBar';
 
 
 const Header = () => {
@@ -33,6 +34,7 @@ const Header = () => {
       <nav className="navigation">
       {navigationButtons}
       </nav>
+      <SearchBar />
 
 
       <div className="login-section" >

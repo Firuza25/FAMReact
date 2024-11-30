@@ -38,7 +38,8 @@ const LoginForm = () => {
       
       console.log("Credentials when handling login: ", credentials)
       const foundUser = credentials.find(
-        (user) => user.username === usernameValue && user.password === passwordValue
+        (user) => user.username === usernameValue &&
+                  user.password === passwordValue
       );
       console.log(foundUser)
       if (foundUser && credentials) {

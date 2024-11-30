@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, Flex } from "antd";
 import movieData from "../../DB/movieData";
 import ContentCard from "../../Card/ContentCard";
+import { context } from "../../../App";
 
 
 const Cinema = () => {
+  const { cinemaData } = useContext(context)
   return (
     <div>
       <Flex
@@ -15,13 +17,14 @@ const Cinema = () => {
           marginTop: "60px",
         }}
       >
-        {movieData.map((movie, index) => (
+        {cinemaData.map((movie, index) => (
           <ContentCard 
+          key={movie.id}
           index = {index} 
           title = {movie.title} 
           image = {movie.image} 
           description = {movie.description} 
-          city = {movie.city}
+          city = {movie.cities}
           id={movie.id} 
           category="cinema"
           />

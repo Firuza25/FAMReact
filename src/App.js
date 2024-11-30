@@ -27,6 +27,9 @@ function App() {
   const [isModalVisible, setIsModalVisible] = useState(false); 
   const [searchResults, setSearchResults] = useState([]); // State for search results
   const [credentials, setCredentials] = useState([])
+  const [cinemaData, setCinemaData] = useState([])
+  const [theaterData, setTheaterData] = useState([])
+  const [events, setEvents] = useState([])
 
   const memoizedSearchResults = useMemo(() => searchResults, [searchResults]);
 
@@ -40,15 +43,31 @@ function App() {
     .catch(err => {
       console.log(err)
     })
+    axios.get('http://localhost:3031/theater')
+    .then(res => {
+      setTheaterData(res.data)
+      console.log("Theaters: ", theaterData)
+    })
+    .catch(err => {
+      console.log(err)
+    });
+    axios.get('http://localhost:3031/cinema')
+    .then(res => {
+      setCinemaData(res.data)
+      console.log("Theaters: ", cinemaData)
+    })
+    .catch(err => {
+      console.log(err)
+    })
 
   }, [])
   useEffect(()=> {
     console.log("Credentials after updates: ", credentials)
   }, [credentials])
-
-
-
-  
+  useEffect(() => {
+    setEvents([...cinemaData, theaterData])
+    console.log("All events: ", events)
+  }, [cinemaData, theaterData])
 
   const handleLogout = useCallback(() => {
     setIsLoggedIn(false)
@@ -68,20 +87,28 @@ function App() {
       setError,
       handleLogout,
       credentials,
-      setCredentials
+      setCredentials,
+      cinemaData,
+      events
     }
 
   ), [ isLoggedIn,
     username,
     password,
     error,
-    credentials
+    credentials,
+    cinemaData,
+    events
    ])
    useEffect(()=>{
     console.log(contextValues);
     console.log("isLoggedin: " , isLoggedIn);
 
    }, [])
+   useEffect(() => {
+    console.log("Cinema data: ", cinemaData)
+   }, [cinemaData])
+
    console.log("context: " , contextValues);
    console.log("isLoggedin: " , isLoggedIn);
   
@@ -103,55 +130,10 @@ function App() {
         // showLoginModal={showModal} 
         setSearchResults={setSearchResults}
       />
-      <SearchingCities setSearchResults={setSearchResults} /> 
+      {/* <SearchingCities setSearchResults={setSearchResults} />  */}
       <Outlet />
       </context.Provider>
       
-      {/* <SearchingResults searchResults={searchResults} />  */}
-      
-      {/* <Modal
-        title="Login"
-        visible={isModalVisible}
-        onCancel={closeModal}
-        footer={null}
-      >
-        <LoginForm
-          username={username}
-          password={password}
-          setUsername={setUsername}
-          setPassword={setPassword}
-          handleLogin={handleLogin}
-          error={error}
-        />
-      </Modal> */}
-
-
-
-      {/* <Routes>
-        <Route path="/cinema" element={<Cinema />} />
-        <Route path="/theaters" element={<Theaters />} />
-        <Route path="/sports" element={<Sports />} />
-        <Route path="/home" element={<Content />} /> 
-        <Route path="/" element={<Content />} />
-
-         
-        <Route path="/:category/:id" element={<DetailsPage />} />
-
-        
-        {isLoggedIn ? (
-          <>
-            <Route path="/myAccount" element={<Account username={username} />} />
-          </>
-        ) : (
-          <Route path="/login" element={<LoginForm 
-            username={username} 
-            password={password} 
-            setUsername={setUsername} 
-            setPassword={setPassword} 
-            handleLogin={handleLogin} 
-            error={error} />} />
-        )}
-      </Routes> */}
     </div>
   {/* </Router> */}
 

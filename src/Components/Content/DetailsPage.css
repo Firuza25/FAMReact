@@ -1,0 +1,69 @@
+/* Schedule container */
+.schedule-container {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #6d6c6c;
+    padding: 20px;
+    /* background-color: #f9f9f9; */
+    /* border-radius: 10px; */
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+    width: 80%;
+    margin: auto;
+
+  }
+  
+  /* Date styling */
+  .schedule-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Info about the theater and city */
+  .schedule-info {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 15px;
+   
+  }
+  
+  /* Container for session times */
+  .sessions-container {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Individual session time styling */
+  .schedule-time {
+    padding: 10px 20px;
+    background-color: #923838;
+    color: #fff;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Ticket icon inside the session time */
+  .ticket-icon {
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  /* Hover effect on schedule times */
+  .schedule-time:hover {
+    background-color: #45a049;
+  }

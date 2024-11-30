@@ -12,6 +12,9 @@ const ContentCard = (props) => {
         navigate(`/${props.category}/${props.id}`);
     }, [props.title, props.id, props.category, navigate]);
 
+    const cityNames = props.city.map(city => city.name).join(", "); // Join city names with a comma
+
+
     return (
       <div style={{display:'flex', flexWrap:'wrap'}}>
         <Card
@@ -26,7 +29,7 @@ const ContentCard = (props) => {
             />
             <div style={{ marginTop: 8 }}>
               <span style={{ fontWeight: 'bold' }}>Город: </span>
-              <span>{props.city}</span>
+              <span>{cityNames}</span>
             </div>
             <Button type="primary" onClick={handleButtonClick}>Купить билет</Button>
 
