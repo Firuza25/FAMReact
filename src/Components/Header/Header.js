@@ -1,9 +1,14 @@
-import React, {useMemo} from 'react';
+import React, {useContext, useMemo} from 'react';
 import { useNavigate} from 'react-router-dom';
 import './header.css'; 
+import { context } from '../../App';
 
 
-const Header = ({ isLoggedIn, showLoginModal, openAccount }) => {
+const Header = () => {
+
+  const { handleLogout } = useContext(context)
+
+  const {isLoggedIn} = useContext(context)
   const navigate = useNavigate();
 
   const navigationButtons = useMemo(() => {
@@ -30,17 +35,24 @@ const Header = ({ isLoggedIn, showLoginModal, openAccount }) => {
       </nav>
 
 
-
-
-      <div className="login-section" onClick={() => navigate('/myAccount')}>
-        {isLoggedIn ? (
-          <button onClick={openAccount} className="account-button">
+      <div className="login-section" >
+        {isLoggedIn ? (<div>
+          <button  className="account-button">
             My profile
           </button>
+          <button onClick={handleLogout}> Logout </button>
+        </div>
+          
         ) : (
-          <button onClick={showLoginModal}  className="login-button">
+          <div>
+            <button onClick={() => navigate("login-page")}  className="login-button">
             Login
           </button>
+          <button onClick={() => navigate("signup-page")}  className="login-button">
+            Signup
+          </button>
+          </div>
+          
         )}
       </div>
     </header>

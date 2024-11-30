@@ -1,7 +1,58 @@
-import React from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { Form, Input, Button } from 'antd';
+import { context } from '../../App';
+import { useNavigate } from 'react-router-dom';
 
-const LoginForm = ({ username, password, setUsername, setPassword, handleLogin, error }) => (
+const LoginForm = () => {
+
+  const [usernameValue, setUsernameValue] = useState('')
+  const [passwordValue, setPasswordValue] = useState('')
+  const { isLoggedIn,
+    setIsLoggedIn,
+    username,
+    setUsername,
+    password,
+    setPassword, error, setError, credentials, setCredentials  } = useContext(context)
+
+    useEffect(() => {
+      console.log("Context in LoginForm:", isLoggedIn,
+        setIsLoggedIn,
+        username,
+        setUsername,
+        password,
+        setPassword, error, setError, handleLogin);
+    }, []);
+  
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+      if(usernameValue !== "" || passwordValue !== ""){
+        console.log(usernameValue , " ", passwordValue)
+        console.log(isLoggedIn)
+
+      }
+     }, [usernameValue, passwordValue])
+    
+     const handleLogin = useCallback(() => {
+      
+      console.log("Credentials when handling login: ", credentials)
+      const foundUser = credentials.find(
+        (user) => user.username === usernameValue && user.password === passwordValue
+      );
+      console.log(foundUser)
+      if (foundUser && credentials) {
+        setIsLoggedIn(true);
+        setError('');
+        // setIsModalVisible(false); 
+        setUsername(username);
+        setPassword(password);
+        navigate("/home")
+      } else {
+        setError('Invalid login information. Try again.');
+      }
+    }, [username, password]);
+
+  return(
   <div>
     <h2>Login</h2>
     <Form
@@ -14,7 +65,7 @@ const LoginForm = ({ username, password, setUsername, setPassword, handleLogin, 
         name="username"
         rules={[{ required: true, message: 'Enter your name!' }]}
       >
-        <Input value={username} onChange={(e) => setUsername(e.target.value)} />
+        <Input value={usernameValue} onChange={(e) => setUsernameValue(e.target.value)} />
       </Form.Item>
 
       <Form.Item
@@ -22,7 +73,7 @@ const LoginForm = ({ username, password, setUsername, setPassword, handleLogin, 
         name="password"
         rules={[{ required: true, message: 'Enter your password!' }]}
       >
-        <Input.Password value={password} onChange={(e) => setPassword(e.target.value)} />
+        <Input.Password value={passwordValue} onChange={(e) => setPasswordValue(e.target.value)} />
       </Form.Item>
 
       {error && <p style={{ color: 'red' }}>{error}</p>} 
@@ -31,7 +82,7 @@ const LoginForm = ({ username, password, setUsername, setPassword, handleLogin, 
         <Button type="primary" htmlType="submit">Login</Button>
       </Form.Item>
     </Form>
-  </div>
-);
+  </div>)
+};
 
 export default LoginForm;
