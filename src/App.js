@@ -29,7 +29,7 @@ function App() {
   const [credentials, setCredentials] = useState([])
   const [cinemaData, setCinemaData] = useState([])
   const [theaterData, setTheaterData] = useState([])
-  const [events, setEvents] = useState([])
+  const [events, setEvents] = useState({})
 
   const memoizedCredentials = useMemo(() => credentials, [credentials]);
   const memoizedEvents = useMemo(() => events, [events]);
@@ -68,7 +68,7 @@ function App() {
   })
 
   useEffect(() => {
-    setEvents([...cinemaData, ...theaterData])
+    setEvents({cinema: [...cinemaData], theater: [...theaterData]})
     console.log("All events: ", events)
   }, [cinemaData, theaterData])
 
@@ -90,7 +90,7 @@ function App() {
       setError,
       handleLogout,
       memoizedCredentials,
-      memoizedEvents,
+      events,
       setCredentials,
       cinemaData,
       

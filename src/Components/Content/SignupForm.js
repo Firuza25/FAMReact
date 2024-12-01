@@ -36,7 +36,6 @@ const SignupForm = () => {
 
     const handleSignUp = () => {
         
-
         if(isAuthorized){
             console.log("Username alredy exists!")
             return

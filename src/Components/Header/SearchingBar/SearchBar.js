@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { context } from "../../../App";
 import { useNavigate } from "react-router-dom";
 
@@ -6,33 +6,42 @@ const SearchBar = () => {
     const { events } = useContext(context)
     const [value, setValue] = useState("")
     const navigate = useNavigate()
-
+    
+    //қайталау
     const filteredEvents = useMemo(() => {
-        if (!Array.isArray(events)) return [];
-        return events.filter((event) => (
-            Object.keys(event).some((key) => {
-                const field = event[key];
-                if (typeof field === "string") {
-                    return field.toLowerCase().includes(value.toLowerCase());
-                }else if (Array.isArray(field)) {
-                    // Search in nested arrays (like cities, theaters, schedules)
-                    return field.some((nestedItem) =>
-                        JSON.stringify(nestedItem)
+        if (!events || typeof events !== "object") return {};
+    
+        return Object.keys(events).reduce((acc, category) => {
+            acc[category] = events[category].filter((event) => {
+                return Object.keys(event).some((key) => {
+                    const field = event[key];
+                    if (typeof field === "string") {
+                        return field.toLowerCase().includes(value.toLowerCase());
+                    } else if (Array.isArray(field)) {
+                        // Search in nested arrays (e.g., cities, theaters, schedules)
+                        return field.some((nestedItem) =>
+                            JSON.stringify(nestedItem)
+                                .toLowerCase()
+                                .includes(value.toLowerCase())
+                        );
+                    } else if (typeof field === "object" && field !== null) {
+                        // Recursively search in nested objects
+                        return JSON.stringify(field)
                             .toLowerCase()
-                            .includes(value.toLowerCase())
-                    );
-                } else if (typeof field === "object" && field !== null) {
-                    // Recursively search in nested objects
-                    return Object.values(field)
-                        .join(" ")
-                        .toLowerCase()
-                        .includes(value.toLowerCase());
-                }
-                return false;
-                
-            })
-        ))
-    }, [events, value])
+                            .includes(value.toLowerCase());
+                    }
+                    return false;
+                });
+            });
+            return acc;
+        }, {});
+    }, [events, value]);
+    
+    
+    useEffect(()=> {
+        console.log("Filtered events by search: ", filteredEvents)
+    }, [filteredEvents])
+    
 
     const handleOnChange = (event) => {
         setValue(event.target.value);
