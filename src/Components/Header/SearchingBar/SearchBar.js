@@ -18,14 +18,14 @@ const SearchBar = () => {
           if (typeof field === "string") {
             return field.toLowerCase().includes(value.toLowerCase());
           } else if (Array.isArray(field)) {
-            // Search in nested arrays (e.g., cities, theaters, schedules)
+           
             return field.some((nestedItem) =>
               JSON.stringify(nestedItem)
                 .toLowerCase()
                 .includes(value.toLowerCase())
             );
           } else if (typeof field === "object" && field !== null) {
-            // Recursively search in nested objects
+           
             return JSON.stringify(field)
               .toLowerCase()
               .includes(value.toLowerCase());

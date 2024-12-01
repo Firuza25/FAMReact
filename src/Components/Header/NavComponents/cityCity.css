@@ -1,8 +1,6 @@
-/* selectStyle.css */
 
-/* Style the select dropdown */
 .select-container {
-    width: 250px; /* Set the width of the dropdown */
+    width: 250px; 
     margin-top: 20px;
     padding: 10px;
     border-radius: 8px;
@@ -13,19 +11,18 @@
     transition: all 0.3s ease-in-out;
   }
   
-  /* Style the select dropdown when focused */
+
   .select-container:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
   }
   
-  /* Add a custom arrow */
+
   .select-container option {
     padding: 10px;
   }
-  
-  /* Custom styles for the option text */
+
   .select-container option:focus {
     background-color: #f1f1f1;
     color: #000;
@@ -35,7 +32,7 @@
     cursor: pointer;
   }
   
-  /* Add a smoother hover effect */
+
   .select-container option:hover {
     background-color: #e9ecef;
     color: #333;

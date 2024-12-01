@@ -5,26 +5,26 @@ import React, {useState, useContext } from "react";
 import "./cityCity.css";
 
 const Cinema = () => {
-  const [selectedCity, setSelectedCity] = useState(""); // Default is empty for "Select City"
+  const [selectedCity, setSelectedCity] = useState(""); 
   const { cinemaData } = useContext(context);
 
-  // Filter cinemas based on selected city
+
   const filteredCinemas = selectedCity && selectedCity !== "Выберите город"
     ? cinemaData.filter(cinema =>
         cinema.cities.some(city => city.name === selectedCity)
       )
-    : cinemaData;  // Show all cinemas if no city is selected
+    : cinemaData;  
 
   return (
     <div className="mb-3">
       <label htmlFor="citySelect" className="form-label">Выберите город:</label>
       <select
         id="citySelect"
-        className="form-select select-container"  // Apply the custom style class here
+        className="form-select select-container"  
         value={selectedCity}
         onChange={(e) => setSelectedCity(e.target.value)}
       >
-        <option value="Выберите город">Выберите город</option> {/* Default option */}
+        <option value="Выберите город">Выберите город</option> 
         <option value="Семей">Семей</option>
         <option value="Алматы">Алматы</option>
         <option value="Нур-Султан">Нур-Султан</option>
