@@ -47,7 +47,11 @@ const SignupForm = () => {
             return
         }
         try{
-            const newUser = { username: usernameValue, password: passwordValue, name };
+            const nextId = credentials.length > 0 
+            ? Math.max(...credentials.map(user => user.id || 0)) + 1 
+            : 1;
+
+            const newUser = {id: nextId, username: usernameValue, password: passwordValue, name };
             axios.post('http://localhost:3031/users', newUser)
             .then(res => {
                 alert("You registered successfully!")

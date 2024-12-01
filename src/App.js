@@ -31,41 +31,44 @@ function App() {
   const [theaterData, setTheaterData] = useState([])
   const [events, setEvents] = useState([])
 
+  const memoizedCredentials = useMemo(() => credentials, [credentials]);
+  const memoizedEvents = useMemo(() => events, [events]);
+
+
   const memoizedSearchResults = useMemo(() => searchResults, [searchResults]);
 
   useEffect(()=> {
-    axios.get('http://localhost:3031/users')
-    .then(res => {
-      console.log("Users: ", res.data)
-      setCredentials(res.data)
-      console.log("Credentials in context:", credentials);
+    Promise.all([
+      axios.get('http://localhost:3031/users'),
+      axios.get('http://localhost:3031/theater'),
+      axios.get('http://localhost:3031/cinema')
+    ])
+    .then(([usersRes, theaterRes, cinemaRes]) => {
+      setCredentials(usersRes.data)
+      setTheaterData(theaterRes.data)
+      setCinemaData(cinemaRes.data)
+      console.log("Credentials start: ", usersRes.data)
+      if(theaterData){
+        console.log("Theaters: ", theaterData)
+      }
+      if(cinemaData){
+        console.log("Cinema: ", cinemaData)
+      }
+      console.log("Fetched data: ", { usersRes, theaterRes, cinemaRes });
+    
     })
     .catch(err => {
-      console.log(err)
-    })
-    axios.get('http://localhost:3031/theater')
-    .then(res => {
-      setTheaterData(res.data)
-      console.log("Theaters: ", theaterData)
-    })
-    .catch(err => {
-      console.log(err)
-    });
-    axios.get('http://localhost:3031/cinema')
-    .then(res => {
-      setCinemaData(res.data)
-      console.log("Theaters: ", cinemaData)
-    })
-    .catch(err => {
-      console.log(err)
+      console.log("Error fetching data: ", err)
     })
 
   }, [])
+
   useEffect(()=> {
     console.log("Credentials after updates: ", credentials)
-  }, [credentials])
+  })
+
   useEffect(() => {
-    setEvents([...cinemaData, theaterData])
+    setEvents([...cinemaData, ...theaterData])
     console.log("All events: ", events)
   }, [cinemaData, theaterData])
 
@@ -86,10 +89,11 @@ function App() {
       error,
       setError,
       handleLogout,
-      credentials,
+      credentials: memoizedCredentials,
+      events: memoizedEvents,
       setCredentials,
       cinemaData,
-      events
+      
     }
 
   ), [ isLoggedIn,

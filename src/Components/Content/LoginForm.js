@@ -45,13 +45,14 @@ const LoginForm = () => {
       if (foundUser && credentials) {
         setIsLoggedIn(true);
         setError('');
-        // setIsModalVisible(false); 
         setUsername(username);
         setPassword(password);
         navigate("/home")
       } else {
         setError('Invalid login information. Try again.');
       }
+
+      
     }, [username, password]);
 
   return(
