@@ -17,6 +17,12 @@
       "username": "user3",
       "password": "password3*",
       "name": "Madina"
+    },
+    {
+      "id": 4,
+      "username": "user4",
+      "password": "password4*",
+      "name": "Firuza"
     }
   ],
   "cinema": [

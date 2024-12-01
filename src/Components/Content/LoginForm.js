@@ -3,6 +3,8 @@ import { Form, Input, Button } from 'antd';
 import { context } from '../../App';
 import { useNavigate } from 'react-router-dom';
 import "./contnent.css"
+import axios from "axios";
+
 
 const LoginForm = () => {
 
@@ -13,7 +15,7 @@ const LoginForm = () => {
     username,
     setUsername,
     password,
-    setPassword, error, setError, credentials, setCredentials  } = useContext(context)
+    setPassword, error, setError,  setCredentials, memoizedCredentials  } = useContext(context)
 
     useEffect(() => {
       console.log("Context in LoginForm:", isLoggedIn,
@@ -34,26 +36,57 @@ const LoginForm = () => {
       }
      }, [usernameValue, passwordValue])
     
-     const handleLogin = useCallback(() => {
-      
-      console.log("Credentials when handling login: ", credentials)
-      const foundUser = credentials.find(
-        (user) => user.username === usernameValue &&
-                  user.password === passwordValue
-      );
-      console.log(foundUser)
-      if (foundUser && credentials) {
-        setIsLoggedIn(true);
-        setError('');
-        setUsername(username);
-        setPassword(password);
-        navigate("/home")
-      } else {
-        setError('Invalid login information. Try again.');
-      }
+    //  const handleLogin = useCallback(() => {
+    //   console.log("Credentials when handling login: ", memoizedCredentials)
+    //   const foundUser = memoizedCredentials.find(
+    //     (user) => user.username === usernameValue &&
+    //               user.password === passwordValue
+    //   );
+    //   console.log(foundUser)
+    //   console.log("passwordValue: ", passwordValue)
+    //   console.log("usernameValue: ", usernameValue)
+    //   if (foundUser && memoizedCredentials) {
+    //     setIsLoggedIn(true);
+    //     setError('');
+    //     setUsername(username);
+    //     setPassword(password);
+    //     navigate("/home")
+    //   } else {
+    //     setError('Invalid login information. Try again.');
+    //   }
 
       
-    }, [username, password]);
+    // }, [username, password]);
+    const handleLogin = useCallback(async () => {
+      try {
+        console.log("Fetching users during login...");
+    
+        // Fetch users directly from the API
+        const response = await axios.get('http://localhost:3031/users');
+        const users = response.data;
+    
+        console.log("Fetched users: ", users);
+    
+        // Find the user in the fetched data
+        const foundUser = users.find(
+          (user) => user.username === usernameValue && user.password === passwordValue
+        );
+    
+        if (foundUser) {
+          setIsLoggedIn(true);
+          setError('');
+          setUsername(foundUser.username);
+          setPassword(foundUser.password);
+          navigate("/home");
+        } else {
+          setError('Invalid login information. Try again.');
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        setError('Failed to log in. Please try again later.');
+      }
+    }, [usernameValue, passwordValue, navigate, setIsLoggedIn, setError, setUsername, setPassword]);
+    
 
   return(
   <div className="login-box">

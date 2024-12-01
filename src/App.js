@@ -89,8 +89,8 @@ function App() {
       error,
       setError,
       handleLogout,
-      credentials: memoizedCredentials,
-      events: memoizedEvents,
+      memoizedCredentials,
+      memoizedEvents,
       setCredentials,
       cinemaData,
       
