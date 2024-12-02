@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index: true,  // Set `Home` as the default component for `/`
+        index: true,  // Set Home as the default component for /
         element: <Content />,
       },
       {

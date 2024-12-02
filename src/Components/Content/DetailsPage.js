@@ -1,4 +1,4 @@
-import React, {useMemo, useEffect, useCallback, useContext, useRef, useState } from 'react';
+import React, { useMemo, useEffect, useCallback, useContext, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from 'antd'; 
 import { ArrowLeftOutlined } from '@ant-design/icons'; 
@@ -8,19 +8,17 @@ import { context } from '../../App';
 import "./DetailsPage.css"
 import BuyTicketModal from './BuyTicketModal';
 import dayjs from 'dayjs';
+import CommentForCard from './CommentForCard';
 
 const DetailsPage = () => {
-    const { cinemaData, isLoggedIn } = useContext(context)
+    const { cinemaData, isLoggedIn, activeUser } = useContext(context);
     const { category, id } = useParams();
     const [visible, setVisible] = useState(false);
-
     const navigate = useNavigate();
-    // const [item, setItem] = useState({})
 
     useEffect(() => {
         console.log(`Category: ${category}, ID: ${id}`)
-    }, [category, id])
-
+    }, [category, id]);
 
     const item = useMemo(() => {
         switch (category) {
@@ -33,118 +31,88 @@ const DetailsPage = () => {
             default:
                 return null;
         }
-        
     }, [category, id, cinemaData]);
-    useEffect(()=> {
-        console.log("Movie: ", item)
-    }, [item])
 
     const handleBackButtonClick = useCallback(() => {
-        console.log(`назад`)
         navigate(`/${category}`);
     }, [category, navigate]);
 
     const formatDateToWords = (dateStr) => {
-        const date = new Date(dateStr)
-        const options = {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}
-        return date.toLocaleDateString('ru-RU', options)
+        const date = new Date(dateStr);
+        const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        return date.toLocaleDateString('ru-RU', options);
     }
-    const scheduleRef = useRef(null) //attached it to div container
-    const handleSchrolling = (scheduleRef) => {
-        if(scheduleRef.current) {
-            scheduleRef.current.scrollIntoView({behavior: "smooth"})
+
+    const scheduleRef = useRef(null);
+    const handleSchrolling = () => {
+        if (scheduleRef.current) {
+            scheduleRef.current.scrollIntoView({ behavior: "smooth" });
         }
-
     }
-
 
     return (
         <div className="event-details-wrapper">
-      <button className="back-button" onClick={handleBackButtonClick}>
-        <ArrowLeftOutlined />
-        Назад
-      </button>
-      {item ? (
-        <>
-          <h1 className="event-title">{item.title}</h1>
-          <img className="event-image" src={item.image} alt={item.title} />
-          <p className="event-details">{item.details}</p>
-          <div className="event-data">
-            {item.data && (
-              <>
-                <p>Год выпуска: {dayjs(item.data.releaseData).year()}</p>
-                <div>Возрастное ограничение: <span>{item.data.ageLimit}</span></div>
-                <div>Жанры: <span>{item.data.genres}</span></div>
-                <div>Актеры: <span>{item.data.actors}</span></div>
-              </>
-            )}
-          </div>
-          <button
-            className="buy-ticket-button"
-            onClick={() => {
-              handleSchrolling(scheduleRef);
-            }}
-          >
-            Купить билет
-          </button>
-
-                    <div style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-around",
-                        position: "relative"
-                    }}>
-                        <div style={{
-                        borderBottom: "1px grey solid",
-                        margin: "100px 50px",
-                         width: "300px",
-            
-                    }}></div>
-                    <p style={{
-                        fontSize: "32px",
-                        position: "absolute",
-                        top: "50px"
-                    }}>Расписание</p>
-                    <div style={{
-                        borderBottom: "1px grey solid",
-                        margin: "100px 50px",
-                        width: "300px"
-                    }}></div>
+            <button className="back-button" onClick={handleBackButtonClick}>
+                <ArrowLeftOutlined />
+                Назад
+            </button>
+            {item ? (
+                <>
+                    <h1 className="event-title">{item.title}</h1>
+                    <img className="event-image" src={item.image} alt={item.title} />
+                    <p className="event-details">{item.details}</p>
+                    <div className="event-data">
+                        {item.data && (
+                            <>
+                                <p>Год выпуска: {dayjs(item.data.releaseData).year()}</p>
+                                <div>Возрастное ограничение: <span>{item.data.ageLimit}</span></div>
+                                <div>Жанры: <span>{item.data.genres}</span></div>
+                                <div>Актеры: <span>{item.data.actors}</span></div>
+                            </>
+                        )}
+                    </div>
+                    <button className="buy-ticket-button" onClick={handleSchrolling}>Купить билет</button>
                     
+                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", position: "relative" }}>
+                        <div style={{ borderBottom: "1px grey solid", margin: "100px 50px", width: "300px" }}></div>
+                        <p style={{ fontSize: "32px", position: "absolute", top: "50px" }}>Расписание</p>
+                        <div style={{ borderBottom: "1px grey solid", margin: "100px 50px", width: "300px" }}></div>
                     </div>
 
-
                     {category === "cinema" && item.cities && (
-  <div ref={scheduleRef}> 
-    {item.cities.map((city, i) => (
-      city.theaters.map((e, j) => (
-        e.schedule.map((d, k) => (
-          <div key={`${i}-${j}-${k}`} className="schedule-container">
-            <div className="schedule-date">{formatDateToWords(d?.date)}</div>
+                        <div ref={scheduleRef}> 
+                            {item.cities.map((city, i) => (
+                                city.theaters.map((e, j) => (
+                                    e.schedule.map((d, k) => (
+                                        <div key={`${i}-${j}-${k}`} className="schedule-container">
+                                            <div className="schedule-date">{formatDateToWords(d?.date)}</div>
+                                            <div className="schedule-info">
+                                                <p>{e.name}</p>
+                                                <p>{city.name}</p>
+                                            </div>
+                                            <div className="sessions-container">
+                                                {d?.sessions.map((tim, t) => (
+                                                    <div key={t} className="schedule-time" onClick={() => setVisible(true)}>
+                                                        {tim.time}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))
+                                ))
+                            ))}
+                        </div>
+                    )}
 
-            <div className="schedule-info">
-              <p>{e.name}</p>
-              <p>{city.name}</p>
-            </div>
-
-            <div className="sessions-container">
-              {d?.sessions.map((tim, t) => (
-                <div key={t} className="schedule-time" onClick={() => setVisible(true)}>
-                  {tim.time}
-                </div>
-              ))}
-            </div>
-          </div>
-        ))
-      ))
-    ))}
-  </div>
-)}
-<BuyTicketModal visible={visible} setVisible={setVisible} ticketDetails={item} isLoggedIn={isLoggedIn} />
-
+                    <BuyTicketModal visible={visible} setVisible={setVisible} ticketDetails={item} isLoggedIn={isLoggedIn} />
                     
+                    <CommentForCard
+  isLoggedIn={isLoggedIn}
+  username={activeUser?.username}
+  movieId={item?.id} 
+/>
 
-                    
+
                 </>
             ) : (
                 <p>Информация не найдена</p>
