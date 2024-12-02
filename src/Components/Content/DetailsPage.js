@@ -1,6 +1,5 @@
 import React, { useMemo, useEffect, useCallback, useContext, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Button } from 'antd'; 
 import { ArrowLeftOutlined } from '@ant-design/icons'; 
 import sportsData from "../DB/sportData";
 import theaterData from "../DB/theatersData";  
@@ -8,7 +7,8 @@ import { context } from '../../App';
 import "./DetailsPage.css"
 import BuyTicketModal from './BuyTicketModal';
 import dayjs from 'dayjs';
-import CommentForCard from './CommentForCard';
+import CommentForCard from './Comments/CommentForCard';
+
 
 const DetailsPage = () => {
     const { cinemaData, isLoggedIn, activeUser } = useContext(context);
