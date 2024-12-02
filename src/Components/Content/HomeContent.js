@@ -15,7 +15,7 @@ const Content = () => {
   }, []);
 
 
-  const filteredMovies = data.filter((cinema) => cinema.movie.rating > 4.7);
+  const filteredMovies = data.filter((cinema) => cinema.data.rating > 4.7);
 
   return (
     <div>
