@@ -7,6 +7,7 @@ import theaterData from "../DB/theatersData";
 import { context } from '../../App';
 import "./DetailsPage.css"
 import BuyTicketModal from './BuyTicketModal';
+import dayjs from 'dayjs';
 
 const DetailsPage = () => {
     const { cinemaData, isLoggedIn } = useContext(context)
@@ -58,24 +59,35 @@ const DetailsPage = () => {
 
 
     return (
-        <div>
-             <Button 
-                color="default"
-                veriant="outlined"
-                onClick={handleBackButtonClick} 
-                style={{ marginBottom: '20px' }}
-                icon={<ArrowLeftOutlined />} 
-            >
-                Назад
-            </Button>
-            {item ? (
-                <>
-                   
-                    <h1>{item.title}</h1>
-                    <img src={item.image} alt={item.title} style={{ width: '100%', maxHeight: '400px', objectFit: 'cover' }} />
-                    <p>{item.details}</p>
-                    {/* <p><strong>Город:</strong> {item.city}</p> */}
-                    <button onClick={() => {handleSchrolling(scheduleRef)}}>Купить билет</button>
+        <div className="event-details-wrapper">
+      <button className="back-button" onClick={handleBackButtonClick}>
+        <ArrowLeftOutlined />
+        Назад
+      </button>
+      {item ? (
+        <>
+          <h1 className="event-title">{item.title}</h1>
+          <img className="event-image" src={item.image} alt={item.title} />
+          <p className="event-details">{item.details}</p>
+          <div className="event-data">
+            {item.data && (
+              <>
+                <p>Год выпуска: {dayjs(item.data.releaseData).year()}</p>
+                <div>Возрастное ограничение: <span>{item.data.ageLimit}</span></div>
+                <div>Жанры: <span>{item.data.genres}</span></div>
+                <div>Актеры: <span>{item.data.actors}</span></div>
+              </>
+            )}
+          </div>
+          <button
+            className="buy-ticket-button"
+            onClick={() => {
+              handleSchrolling(scheduleRef);
+            }}
+          >
+            Купить билет
+          </button>
+
                     <div style={{
                         display: "flex",
                         flexDirection: "row",
@@ -98,7 +110,10 @@ const DetailsPage = () => {
                         margin: "100px 50px",
                         width: "300px"
                     }}></div>
+                    
                     </div>
+
+
                     {category === "cinema" && item.cities && (
   <div ref={scheduleRef}> 
     {item.cities.map((city, i) => (
