@@ -39,10 +39,10 @@ const Header = () => {
 
       <div className="login-section" >
         {isLoggedIn ? (<div>
-          <button  className="account-button">
+          <button onClick={() => navigate("user-profile")} className="account-button">
             My profile
           </button>
-          <button onClick={handleLogout}> Logout </button>
+          <button onClick={handleLogout} className="login-button" > Logout </button>
         </div>
           
         ) : (

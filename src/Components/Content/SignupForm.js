@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { memo, useContext, useState, useEffect } from 'react';
 import { Form, Input, Button } from 'antd';
 import { context } from '../../App';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 
-const SignupForm = () => {
+const SignupForm = memo(() => {
   const [usernameValue, setUsernameValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
   const [secondPasswordValue, setSecondPasswordValue] = useState('')
@@ -17,7 +17,8 @@ const SignupForm = () => {
     username,
     setUsername,
     password,
-    setPassword, error, handleLogin, credentials, setCredentials  } = useContext(context)
+    setPassword, error, handleLogin, credentials, setCredentials, 
+    isAuthorized, setAuthorized, isValid, setValid  } = useContext(context)
 
     useEffect(()=>{
       if(usernameValue !== "" || passwordValue !== ""){
@@ -27,8 +28,7 @@ const SignupForm = () => {
       }
      }, [usernameValue, passwordValue])
 
-     const [isAuthorized, setAuthorized] = useState(false)
-    const [isValid, setValid] = useState(true)
+     
 
     const navigate = useNavigate()
 
@@ -50,7 +50,7 @@ const SignupForm = () => {
             ? Math.max(...credentials.map(user => user.id || 0)) + 1 
             : 1;
 
-            const newUser = {id: nextId, username: usernameValue, password: passwordValue, name };
+            const newUser = {id: nextId.toString(), username: usernameValue, password: passwordValue, name };
             axios.post('http://localhost:3031/users', newUser)
             .then(res => {
                 alert("You registered successfully!")
@@ -60,6 +60,8 @@ const SignupForm = () => {
                 setUsernameValue("")
                 setSecondPasswordValue("")
                 setName("")
+                setAuthorized(false)
+                setValid(true)
                 navigate("/home")
                 
             })
@@ -87,6 +89,9 @@ const SignupForm = () => {
         if(passwordValue !== "" && (passwordValue === secondPasswordValue || passwordValue.length < 8 || !regex.test(passwordValue))){
             setValid(true)
         }else setValid(false)
+
+        console.log("isAuthorized: ", isAuthorized)//default false
+        console.log("isValid: ", isValid) //default true
 
     }, [usernameValue, passwordValue, secondPasswordValue])
 
@@ -169,6 +174,6 @@ const SignupForm = () => {
     </Form>
   </div>)
 
-}
+})
 
 export default SignupForm

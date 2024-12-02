@@ -16,6 +16,10 @@ import Sports from './Components/Header/NavComponents/Sports';
 import DetailsPage from './Components/Content/DetailsPage';
 import SignupForm from './Components/Content/SignupForm';
 import JsonServer from './Components/JsonServer';
+import MyProfile from './Components/Account/MyProfile';
+import MyProfileSettings from './Components/Account/MyProfileSettings';
+import MyTickets from './Components/Account/MyTickets';
+import BuyTicketModal from './Components/Content/BuyTicketModal';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +47,20 @@ const router = createBrowserRouter([
         element: <Sports />,
       },
       {
+        path: "user-profile",
+        element: <MyProfile />,
+        children: [
+          {
+            index: true, 
+            element: <MyProfileSettings />,
+          },
+          {
+            path: "tickets",  
+            element: <MyTickets />,
+          },
+        ]
+      },
+      {
         path: ":category/:id",
         element: <DetailsPage />,
       },
@@ -59,6 +77,10 @@ const router = createBrowserRouter([
           <SignupForm
           />
         ),
+      },
+      {
+        path: "buy-tickets",  
+        element: <BuyTicketModal />,
       },
     ]
 

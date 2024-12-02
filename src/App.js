@@ -30,9 +30,11 @@ function App() {
   const [cinemaData, setCinemaData] = useState([])
   const [theaterData, setTheaterData] = useState([])
   const [events, setEvents] = useState({})
-
+  const [activeUser, setActiveUser] = useState({})
   const memoizedCredentials = useMemo(() => credentials, [credentials]);
   const memoizedEvents = useMemo(() => events, [events]);
+  const [isAuthorized, setAuthorized] = useState(false)
+  const [isValid, setValid] = useState(true)
 
 
   const memoizedSearchResults = useMemo(() => searchResults, [searchResults]);
@@ -76,6 +78,7 @@ function App() {
     setIsLoggedIn(false)
     setUsername("")
     setPassword("")
+    setActiveUser({})
   }, [])
 
   const contextValues = useMemo(() => (
@@ -89,11 +92,17 @@ function App() {
       error,
       setError,
       handleLogout,
-      memoizedCredentials,
+      credentials,
       events,
       setCredentials,
       cinemaData,
-      
+      activeUser,
+      setActiveUser,
+      isAuthorized,
+      setAuthorized,
+      isValid,
+      setValid,
+      setActiveUser
     }
 
   ), [ isLoggedIn,
@@ -102,7 +111,10 @@ function App() {
     error,
     credentials,
     cinemaData,
-    events
+    events, 
+    activeUser,
+    isAuthorized,
+    isValid
    ])
    useEffect(()=>{
     console.log(contextValues);

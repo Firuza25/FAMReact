@@ -1,4 +1,4 @@
-import React, {useMemo, useEffect, useCallback, useContext, useRef } from 'react';
+import React, {useMemo, useEffect, useCallback, useContext, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from 'antd'; 
 import { ArrowLeftOutlined } from '@ant-design/icons'; 
@@ -6,10 +6,12 @@ import sportsData from "../DB/sportData";
 import theaterData from "../DB/theatersData";  
 import { context } from '../../App';
 import "./DetailsPage.css"
+import BuyTicketModal from './BuyTicketModal';
 
 const DetailsPage = () => {
-    const { cinemaData } = useContext(context)
+    const { cinemaData, isLoggedIn } = useContext(context)
     const { category, id } = useParams();
+    const [visible, setVisible] = useState(false);
 
     const navigate = useNavigate();
     // const [item, setItem] = useState({})
@@ -112,7 +114,7 @@ const DetailsPage = () => {
 
             <div className="sessions-container">
               {d?.sessions.map((tim, t) => (
-                <div key={t} className="schedule-time">
+                <div key={t} className="schedule-time" onClick={() => setVisible(true)}>
                   {tim.time}
                 </div>
               ))}
@@ -123,6 +125,8 @@ const DetailsPage = () => {
     ))}
   </div>
 )}
+<BuyTicketModal visible={visible} setVisible={setVisible} ticketDetails={item} isLoggedIn={isLoggedIn} />
+
                     
 
                     
