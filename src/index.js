@@ -23,6 +23,39 @@ import BuyTicketModal from './Components/Content/BuyTicketModal';
 import store from './store';
 import { Provider } from 'react-redux';
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('/serviceWorker.js');
+      console.log('Service Worker registered with scope:', registration.scope);
+
+      // Запрос разрешения на уведомления
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
+        console.log('Уведомления разрешены пользователем.');
+
+        // Подписываем пользователя
+        const subscription = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: 'BJjhfWvGIDo2YdfWRHq0CA7Hs2d4uwvnHPHTDen6qSgX7lCu2oQqj2cDZ8aCxlwKii6D3XVpEyzw6aw4jlSqKFs', 
+        });
+
+        console.log('Push Subscription:', subscription);
+
+        // Отправьте подписку на сервер
+        await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(subscription),
+        });
+      } else {
+        console.error('Пользователь отказался от уведомлений.');
+      }
+    } catch (error) {
+      console.error('Ошибка регистрации Service Worker или подписки:', error);
+    }
+  });
+}
 const router = createBrowserRouter([
   {
     path: "/",

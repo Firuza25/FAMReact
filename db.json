@@ -55,6 +55,12 @@
       "username": "user00000000",
       "password": "password4*",
       "name": "Makeli"
+    },
+    {
+      "id": "9",
+      "username": "anara",
+      "password": "password12*",
+      "name": "anara"
     }
   ],
   "cinema": [
