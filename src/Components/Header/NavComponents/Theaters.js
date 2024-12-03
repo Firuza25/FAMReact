@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, Flex } from "antd";
-import theatersData from "../../DB/theatersData";
+import { Flex } from "antd";
+import { useSelector } from 'react-redux';
 import ContentCard from "../../Card/ContentCard";
 
-const { Meta } = Card;
-
 const Theaters = () => {
+  const { theaterData } = useSelector((state) => state.data); // Accessing theaterData from Redux store
+
   return (
     <div>
       <Flex
@@ -14,17 +14,20 @@ const Theaters = () => {
           justifyContent: "center",
           gap: "30px",
           marginTop: "60px",
+          flexWrap: "wrap",
+          width: "90%",
         }}
       >
-        {theatersData.map((theater, index) => (
+        {theaterData.map((theater) => (
           <ContentCard 
-          index = {index} 
-          title = {theater.title} 
-          image = {theater.image} 
-          description = {theater.description} 
-          city = {theater.city}
-          id={theater.id} 
-          category="theaters"
+            key={theater.id}
+            title={theater.title} 
+            image={theater.image} 
+            description={theater.description} 
+            city={theater.city}
+            id={theater.id} 
+            category="theaters"
+            data={theater.data}  // Passing the theater data
           />
         ))}
       </Flex>

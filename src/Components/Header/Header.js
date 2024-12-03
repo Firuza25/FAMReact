@@ -28,7 +28,7 @@ const Header = () => {
       <>
         <button onClick={() => navigate('/cinema')}>Cinema</button>
         <button onClick={() => navigate('/theaters')}>Theaters</button>
-        <button onClick={() => navigate('/sports')}>Sports</button>
+        {/* <button onClick={() => navigate('/sports')}>Sports</button> */}
         <button onClick={() => navigate('/home')}>Home</button>
       </>
     );

@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     Promise.all([
       axios.get('http://localhost:3031/users'),
-      axios.get('http://localhost:3031/theater'),
+      axios.get('http://localhost:3031/theaters'),
       axios.get('http://localhost:3031/cinema')
     ])
       .then(([usersRes, theaterRes, cinemaRes]) => {

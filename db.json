@@ -32,7 +32,17 @@
       "id": "6",
       "username": "user6",
       "password": "password6*",
-      "name": "Alina"
+      "name": "Alina",
+      "data": {
+        "bookings": {
+          "1733251333256": {
+            "ticket": "http://localhost:3031/theaters/3",
+            "bookdate": "2024-12-03",
+            "bookTime": "23:42:13",
+            "quantity": 3
+          }
+        }
+      }
     },
     {
       "id": "7",
@@ -42,9 +52,9 @@
     },
     {
       "id": "8",
-      "username": "user00",
+      "username": "user00000000",
       "password": "password4*",
-      "name": "Makuna"
+      "name": "Makeli"
     }
   ],
   "cinema": [
@@ -291,32 +301,56 @@
           ]
         }
       ]
-    }
-  ],
-  "theater": [
+    },
     {
-      "id": "1",
-      "title": "Спектакль 1: Волшебная ночь",
-      "category": "theater",
-      "releaseDate": "2024-12-05",
-      "description": "14 октября, 19:00, от 2 500 тг.",
-      "image": "https://ticketon.kz/media/upload/spektakl-volshebnaya-noch.jpg",
+      "id": "3",
+      "title": "Человек-паук: Сквозь вселенные (2024)",
+      "category": "cinema",
+      "data": {
+        "releaseDate": "2024-12-12",
+        "genres": "Экшн, Приключения, Фантастика",
+        "genre-list": "Экшн,Приключения,Фантастика",
+        "actors": "Том Холланд, Зендая, Бенедикт Камбербэтч",
+        "rating": 4.95,
+        "ageLimit": "12+",
+        "comments": [
+          {
+            "text": "Лучший фильм о Спайдермене!",
+            "user": "user2"
+          }
+        ]
+      },
+      "description": "22 декабря, от 1500 тг.",
+      "details": "Сквозь различные вселенные Человек-паук продолжает свои приключения, сталкиваясь с новыми угрозами, врагами и союзниками. В этом фильме он должен научиться работать с другими версиями себя, чтобы остановить катастрофу, угрожающую всему мультивселенной.",
+      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/10893610/4df6ae79-1fef-4a72-b55d-9be66233af1e/220x330",
       "cities": [
         {
-          "id": 1,
-          "name": "Нур-Султан",
+          "id": "1",
+          "name": "Алматы",
           "theaters": [
             {
-              "id": 1,
-              "name": "Театр 1",
+              "id": "1",
+              "name": "Кинотеатр 1",
               "schedule": [
                 {
-                  "date": "2024-12-05",
-                  "session": {
-                    "time": "19:00",
-                    "availableSeats": 100,
-                    "price": 2500
-                  }
+                  "date": "2024-12-12",
+                  "sessions": [
+                    {
+                      "time": "15:00",
+                      "availableSeats": 50,
+                      "price": 1500
+                    },
+                    {
+                      "time": "17:30",
+                      "availableSeats": 45,
+                      "price": 1500
+                    },
+                    {
+                      "time": "20:00",
+                      "availableSeats": 30,
+                      "price": 1500
+                    }
+                  ]
                 }
               ]
             }
@@ -325,30 +359,330 @@
       ]
     },
     {
-      "id": "2",
-      "title": "Спектакль 2: Легенды прошлого",
-      "category": "theater",
-      "releaseDate": "2024-12-05",
-      "description": "14 октября, 20:30, от 2 000 тг.",
-      "image": "https://ticketon.kz/media/upload/spektakl-legendi-proshlogo.jpg",
+      "id": "4",
+      "title": "Бегущий в лабиринте: Вечное затмение (2024)",
+      "category": "cinema",
+      "data": {
+        "releaseDate": "2024-12-15",
+        "genres": "Триллер, Научная фантастика, Драма",
+        "genre-list": "Триллер,Научная фантастика,Драма",
+        "actors": "Дилан О'Брайен, Кайя Скоделарио, Томас Броуди-Сангстер",
+        "rating": 4.75,
+        "ageLimit": "16+",
+        "comments": [
+          {
+            "text": "Интригующий и захватывающий фильм!",
+            "user": "user3"
+          }
+        ]
+      },
+      "description": "15 декабря, от 1300 тг.",
+      "details": "В последней части трилогии «Бегущий в лабиринте» группа подростков продолжает бороться с опасными технологиями и научными экспериментами, которые угрожают всему человечеству. Новый и невероятно сложный лабиринт становится последним испытанием для выживших.",
+      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/ff6956bc-a971-4fd9-ae7a-0e0ad6dd6c0d/600x900",
       "cities": [
         {
-          "id": 1,
+          "id": "1",
           "name": "Алматы",
           "theaters": [
             {
-              "id": 1,
-              "name": "Театр 2",
+              "id": "1",
+              "name": "Кинотеатр 1",
               "schedule": [
                 {
-                  "date": "2024-12-05",
-                  "session": {
-                    "time": "20:30",
-                    "availableSeats": 80,
-                    "price": 2000
-                  }
+                  "date": "2024-12-15",
+                  "sessions": [
+                    {
+                      "time": "13:00",
+                      "availableSeats": 60,
+                      "price": 1300
+                    },
+                    {
+                      "time": "16:00",
+                      "availableSeats": 50,
+                      "price": 1300
+                    },
+                    {
+                      "time": "19:00",
+                      "availableSeats": 40,
+                      "price": 1300
+                    }
+                  ]
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Секреты прошлого (2024)",
+      "category": "cinema",
+      "data": {
+        "releaseDate": "2024-12-20",
+        "genres": "Драма, Триллер, Мистика",
+        "genre-list": "Драма,Триллер,Мистика",
+        "actors": "Генри Кавилл, Эмили Блант, Ричард Мэдден",
+        "rating": 4.88,
+        "ageLimit": "18+",
+        "comments": [
+          {
+            "text": "Драмеди с элементами триллера, супер!",
+            "user": "user4"
+          }
+        ]
+      },
+      "description": "20 декабря, от 1400 тг.",
+      "details": "Молодой детектив расследует загадочное убийство, которое, по его мнению, связано с темными событиями прошлого. Чем глубже он копает, тем больше он понимает, что его собственная жизнь может быть связана с этим ужасным преступлением.",
+      "image": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/67b8a0a0-12e7-4bcb-a213-6ca78373ca7f/600x900",
+      "cities": [
+        {
+          "id": "1",
+          "name": "Алматы",
+          "theaters": [
+            {
+              "id": "1",
+              "name": "Кинотеатр 1",
+              "schedule": [
+                {
+                  "date": "2024-12-20",
+                  "sessions": [
+                    {
+                      "time": "14:00",
+                      "availableSeats": 50,
+                      "price": 1400
+                    },
+                    {
+                      "time": "17:00",
+                      "availableSeats": 40,
+                      "price": 1400
+                    },
+                    {
+                      "time": "20:00",
+                      "availableSeats": 30,
+                      "price": 1400
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "theaters": [
+    {
+      "id": "1",
+      "title": "Спектакль 1: Волшебная ночь",
+      "category": "theaters",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et porttitor sapien. Ut metus tellus, lacinia auctor convallis at, facilisis id nisl. Fusce quis dui luctus, fringilla urna eget, sodales nisl. Aliquam feugiat massa nec ultrices semper. Sed hendrerit, ante vel blandit faucibus, elit lorem volutpat nulla, eget vehicula lectus lectus non tortor. Nulla ex ligula, venenatis sit amet arcu eu, pulvinar rhoncus quam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi viverra vel risus sit amet blandit. Nullam ut magna a turpis semper aliquam et non ipsum. Morbi mi tellus, interdum id nulla id, mattis aliquet nibh. Vestibulum sollicitudin nisl et gravida rhoncus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas magna purus, volutpat ac lorem quis, mattis tempus libero. Vivamus a accumsan odio.",
+      "data": {
+        "genres": "Драма, Мистика",
+        "genre-list": "Драма,Мистика",
+        "rating": 4.88,
+        "comments": [
+          {
+            "text": "Драмеди с элементами триллера, супер!",
+            "user": "user4"
+          }
+        ]
+      },
+      "description": "14 октября, 19:00, от 2 500 тг.",
+      "image": "https://ticketon.kz/media/upload/spektakl-volshebnaya-noch.jpg",
+      "city": "Нур-Султан",
+      "theaters": [
+        {
+          "id": 1,
+          "name": "Театр 1",
+          "schedule": [
+            {
+              "date": "2024-12-05",
+              "session": {
+                "time": "19:00",
+                "availableSeats": 100,
+                "price": 2500
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Спектакль 2: Тайна затмения",
+      "category": "theaters",
+      "details": "Mauris mollis, justo eu vulputate feugiat, ligula nulla hendrerit purus, et elementum purus orci et neque. Cras sollicitudin convallis arcu, et dapibus nulla tempus non. Vivamus id metus vestibulum, dictum orci nec, euismod ex. Donec tincidunt urna a dui placerat mollis. Suspendisse viverra bibendum arcu, ac pharetra lorem viverra vel. Phasellus sed elit elit. Aenean euismod leo et dui convallis feugiat.",
+      "data": {
+        "genres": "Триллер, Мистика",
+        "genre-list": "Триллер,Мистика",
+        "rating": 4.92,
+        "comments": [
+          {
+            "text": "Захватывающее и интригующее шоу!",
+            "user": "user5"
+          }
+        ]
+      },
+      "description": "18 декабря, 20:00, от 3 000 тг.",
+      "image": "https://ticketon.kz/media/upload/spektakl-tayna-zatmeniya.jpg",
+      "city": "Нур-Султан",
+      "theaters": [
+        {
+          "id": 1,
+          "name": "Театр 1",
+          "schedule": [
+            {
+              "date": "2024-12-18",
+              "session": {
+                "time": "20:00",
+                "availableSeats": 80,
+                "price": 3000
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Спектакль 3: В поисках света",
+      "category": "theaters",
+      "details": "Integer non vehicula eros. In vulputate justo et ultricies fermentum. Sed non vehicula justo, sit amet auctor turpis. Aliquam non odio felis. Nunc vel gravida lorem. Suspendisse eu ligula neque. Integer auctor, magna id varius dictum, justo libero auctor neque, ac viverra risus augue et libero. Cras sed quam ipsum.",
+      "data": {
+        "genres": "Драма, Фантастика",
+        "genre-list": "Драма,Фантастика",
+        "rating": 4.8,
+        "comments": [
+          {
+            "text": "Очень умный и глубокомысленный спектакль.",
+            "user": "user6"
+          }
+        ]
+      },
+      "description": "22 декабря, 18:00, от 2 800 тг.",
+      "image": "https://ticketon.kz/media/upload/spektakl-poisk-sveta.jpg",
+      "city": "Алматы",
+      "theaters": [
+        {
+          "id": 2,
+          "name": "Театр 2",
+          "schedule": [
+            {
+              "date": "2024-12-22",
+              "session": {
+                "time": "18:00",
+                "availableSeats": 120,
+                "price": 2800
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Спектакль 4: Звездные мечты",
+      "category": "theaters",
+      "details": "Proin tincidunt orci vel odio fermentum, eu tincidunt dui tincidunt. Fusce sollicitudin urna ut augue iaculis, ac fermentum ligula cursus. Sed suscipit orci ac nisi aliquam, a suscipit arcu dictum. Nunc luctus nunc nec magna auctor tincidunt. Curabitur sollicitudin risus sed nunc fermentum feugiat.",
+      "data": {
+        "genres": "Фантастика, Драма",
+        "genre-list": "Фантастика,Драма",
+        "rating": 4.85,
+        "comments": [
+          {
+            "text": "Очень трогательный и воодушевляющий спектакль.",
+            "user": "user7"
+          }
+        ]
+      },
+      "description": "26 декабря, 19:30, от 3 200 тг.",
+      "image": "https://ticketon.kz/media/upload/spektakl-zvezdnye-mechty.jpg",
+      "city": "Нур-Султан",
+      "theaters": [
+        {
+          "id": 1,
+          "name": "Театр 1",
+          "schedule": [
+            {
+              "date": "2024-12-26",
+              "session": {
+                "time": "19:30",
+                "availableSeats": 90,
+                "price": 3200
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Спектакль 5: Столкновение миров",
+      "category": "theaters",
+      "details": "Sed vestibulum, leo id lobortis fermentum, libero libero consequat arcu, ac dignissim elit libero sit amet nunc. Donec cursus nunc sit amet dui venenatis, et vestibulum velit suscipit. Morbi euismod tempor nisi, nec gravida ligula interdum non. Vivamus sodales diam eu dui ultricies consequat. Nam at auctor risus, eget vehicula enim.",
+      "data": {
+        "genres": "Приключения, Мистика",
+        "genre-list": "Приключения,Мистика",
+        "rating": 4.9,
+        "comments": [
+          {
+            "text": "Прекрасное сочетание драмы и приключений.",
+            "user": "user8"
+          }
+        ]
+      },
+      "description": "30 декабря, 21:00, от 3 500 тг.",
+      "image": "https://ticketon.kz/media/upload/spektakl-stolknovenie-mirov.jpg",
+      "city": "Алматы",
+      "theaters": [
+        {
+          "id": 2,
+          "name": "Театр 2",
+          "schedule": [
+            {
+              "date": "2024-12-30",
+              "session": {
+                "time": "21:00",
+                "availableSeats": 75,
+                "price": 3500
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Спектакль 6: Время изменений",
+      "category": "theaters",
+      "details": "Cras efficitur, dolor ut convallis rutrum, lacus turpis malesuada risus, sed tincidunt justo ante ac nunc. Nam viverra tortor ac purus malesuada, ut condimentum risus luctus. Nulla ullamcorper et dolor sit amet gravida. Aliquam aliquet ligula sed risus dictum, et pellentesque urna malesuada. Integer id ante ligula.",
+      "data": {
+        "genres": "Драма, Триллер",
+        "genre-list": "Драма,Триллер",
+        "rating": 4.93,
+        "comments": [
+          {
+            "text": "Тревожная атмосфера и глубина сюжета.",
+            "user": "user9"
+          }
+        ]
+      },
+      "description": "5 января, 20:00, от 2 700 тг.",
+      "image": "https://ticketon.kz/media/upload/spektakl-vremya-izmeneniy.jpg",
+      "city": "Нур-Султан",
+      "theaters": [
+        {
+          "id": 1,
+          "name": "Театр 1",
+          "schedule": [
+            {
+              "date": "2025-01-05",
+              "session": {
+                "time": "20:00",
+                "availableSeats": 100,
+                "price": 2700
+              }
             }
           ]
         }

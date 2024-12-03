@@ -19,7 +19,7 @@ const DetailsPage = () => {
     const [visible, setVisible] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { cinemaData, isLoggedIn, activeUser } = useSelector(state => state.data);
+    const { cinemaData, theaterData, isLoggedIn, activeUser } = useSelector(state => state.data);
 
 
 
@@ -31,14 +31,12 @@ const DetailsPage = () => {
         switch (category) {
             case 'cinema':
                 return cinemaData.find(movie => movie.id.toString() === id);
-            case 'sports':
-                return sportsData.find(sport => sport.id.toString() === id);
             case 'theaters':
                 return theaterData.find(theater => theater.id.toString() === id);
             default:
                 return null;
         }
-    }, [category, id, cinemaData]);
+    }, [category, id, cinemaData, theaterData]);
 
     const handleBackButtonClick = useCallback(() => {
         navigate(`/${category}`);
@@ -69,15 +67,22 @@ const DetailsPage = () => {
                     <img className="event-image" src={item.image} alt={item.title} />
                     <p className="event-details">{item.details}</p>
                     <div className="event-data">
-                        {item.data && (
-                            <>
-                                <p>Год выпуска: {dayjs(item.data.releaseData).year()}</p>
-                                <div>Возрастное ограничение: <span>{item.data.ageLimit}</span></div>
-                                <div>Жанры: <span>{item.data.genres}</span></div>
-                                <div>Актеры: <span>{item.data.actors}</span></div>
-                            </>
-                        )}
-                    </div>
+    {item.data && category === "cinema" && (
+        <>
+            <p>Год выпуска: {dayjs(item.data.releaseDate).year()}</p>
+            <div>Возрастное ограничение: <span>{item.data.ageLimit}</span></div>
+            <div>Жанры: <span>{item.data.genres}</span></div>
+            <div>Актеры: <span>{item.data.actors}</span></div>
+        </>
+    )}
+
+    {item.data && category === "theaters" && (
+        <>
+            <div>Возрастное ограничение: <span>{item.data.ageLimit}</span></div>
+            <div>Жанры: <span>{item.data.genres}</span></div>
+        </>
+    )}
+</div>
                     <button className="buy-ticket-button" onClick={handleSchrolling}>Купить билет</button>
                     
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around", position: "relative" }}>
@@ -106,6 +111,29 @@ const DetailsPage = () => {
                                             </div>
                                         </div>
                                     ))
+                                ))
+                            ))}
+                        </div>
+                    )}
+
+{category === "theaters" && item.theaters && (
+                        <div ref={scheduleRef}> 
+                            {item.theaters.map((theater, i) => (
+                                theater.schedule.map((schedule, k) => (
+                                    <div key={`${i}-${k}`} className="schedule-container">
+                                        <div className="schedule-date">{formatDateToWords(schedule.date)}</div>
+                                        <div className="schedule-info">
+                                            <p>{theater.name}</p>
+                                            <p>{item.city}</p>
+                                        </div>
+                                        <div className="sessions-container">
+                                            {schedule.session && (
+                                                <div key={k} className="schedule-time" onClick={() => setVisible(true)}>
+                                                    {schedule.session.time}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
                                 ))
                             ))}
                         </div>
