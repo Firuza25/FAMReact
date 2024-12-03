@@ -19,7 +19,7 @@ const Cinema = () => {
       >
         {cinemaData.map((movie, index) => (
           <ContentCard 
-          key={movie.id}
+          key={+movie.id}
           index = {index} 
           title = {movie.title} 
           image = {movie.image} 

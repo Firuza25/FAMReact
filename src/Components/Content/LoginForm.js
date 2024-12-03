@@ -10,12 +10,13 @@ const LoginForm = () => {
 
   const [usernameValue, setUsernameValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
+  
   const { isLoggedIn,
     setIsLoggedIn,
     username,
     setUsername,
     password,
-    setPassword, error, setError,  setCredentials, memoizedCredentials  } = useContext(context)
+    setPassword, error, setError,  setCredentials, memoizedCredentials, setActiveUser  } = useContext(context)
 
     useEffect(() => {
       console.log("Context in LoginForm:", isLoggedIn,
@@ -77,6 +78,7 @@ const LoginForm = () => {
           setError('');
           setUsername(foundUser.username);
           setPassword(foundUser.password);
+          setActiveUser(foundUser)
           navigate("/home");
         } else {
           setError('Invalid login information. Try again.');

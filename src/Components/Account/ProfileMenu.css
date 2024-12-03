@@ -1,0 +1,53 @@
+Sidebar menu container
+.profile-menu {
+    display: flex;
+    /* flex-direction: column; */
+    /* position: fixed; */
+    /* top: 60px;  */
+    /* left: 0; */
+    height: 500px; 
+    width: 250px; /* Sidebar width */
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 900; /* Lower than the header's z-index */
+    overflow-y: auto; 
+}
+
+/* Header text for the menu */
+.profile-menu p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Each menu item (clickable box) */
+.profile-menu-box {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Menu item text */
+.profile-menu-box p {
+    margin: 0;
+    color: #555;
+    font-size: 16px;
+}
+
+/* Hover effect */
+.profile-menu-box:hover {
+    background-color: #f7f7f7;
+}
+
+/* Active effect */
+.profile-menu-box:active {
+    background-color: #e0e0e0;
+}

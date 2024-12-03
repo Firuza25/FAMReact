@@ -57,16 +57,22 @@ const SearchBar = () => {
                     border: "1px solid #ccc"
                 }} />
         <div>
-        {value.trim() !== "" && filteredEvents.length > 0 && (
-                <div className="dropdown">
-                    {filteredEvents.map((event) => (
-                        <div key={event.id} className="dropdown-item" onClick={()=> {navigate(`/${event.category}/${event.id}`)}}>
-                            <h4>{event.title}</h4>
-                            <p>{event.description}</p>
-                        </div>
-                    ))}
-                </div>
-            )}
+        {value.trim() !== "" && 
+ Object.values(filteredEvents).flat().length > 0 && (
+    <div className="dropdown">
+        {Object.values(filteredEvents).flat().map((event) => (
+            <div 
+                key={event.id} 
+                className="dropdown-item" 
+                onClick={() => navigate(`/${event.category}/${event.id}`)}
+            >
+                <h4>{event.title}</h4>
+                <p>{event.description}</p>
+            </div>
+        ))}
+    </div>
+)}
+
         
         </div>
 

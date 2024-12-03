@@ -1,0 +1,53 @@
+/* Main container for the layout */
+.my-profile {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    width: 100%;   /* Full width */
+    overflow: hidden; /* Prevent content overflow */
+}
+
+/* Sidebar (ProfileMenu) styles */
+.profile-menu {
+    display: flex;
+    flex-direction: column;
+    /* position: fixed; */
+    /* top: 0; */
+    /* left: 0; */
+    height: 100%; /* Full height */
+    width: 250px; /* Sidebar width */
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+/* Content section (MyProfileSettings or Outlet content) */
+.my-profile-content {
+    /* margin-left: 250px;  */
+    padding: 20px;
+    flex: 1; /* Take the remaining space */
+    overflow-y: auto; /* Allows scrolling if content overflows */
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Header for the profile settings section */
+.my-profile-content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form styling */
+.my-profile-content form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.my-profile-content .ant-form-item-label {
+    font-weight: bold;
+    color: #555;
+}
