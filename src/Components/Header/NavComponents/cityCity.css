@@ -1,0 +1,40 @@
+
+.select-container {
+    width: 250px; 
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f4f4f9;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+  }
+  
+
+  .select-container:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+  
+
+  .select-container option {
+    padding: 10px;
+  }
+
+  .select-container option:focus {
+    background-color: #f1f1f1;
+    color: #000;
+  }
+  
+  .select-container:hover {
+    cursor: pointer;
+  }
+  
+
+  .select-container option:hover {
+    background-color: #e9ecef;
+    color: #333;
+  }
+  

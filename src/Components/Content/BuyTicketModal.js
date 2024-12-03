@@ -4,10 +4,14 @@ import dayjs from "dayjs";
 import { Modal, Button, InputNumber, Select, DatePicker, message } from "antd";
 import useConfig from "antd/es/config-provider/hooks/useConfig";
 import { context } from "../../App";
+import { useSelector } from "react-redux";
 
 
-const BuyTicketModal = memo(({visible, setVisible, ticketDetails, isLoggedIn}) => {
-    const {activeUser} = useContext(context)
+
+const BuyTicketModal = memo(({visible, setVisible, ticketDetails}) => {
+    // const {activeUser} = useContext(context)
+    const { activeUser, isLoggedIn } = useSelector(state => state.data);
+
     
     const [ticketQuantity, setTicketQuantity] = useState(1);
     const handleBuyTicket = async () => {

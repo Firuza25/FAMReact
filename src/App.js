@@ -1,161 +1,59 @@
-import React, { useState, useCallback, useEffect, useMemo, createContext} from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet, useNavigate } from 'react-router-dom';
 import Header from './Components/Header/Header';
-// import Content from './Components/Content/HomeContent';
-// import LoginForm from './Components/Content/LoginForm';
-// import Account from './Components/Account/Account';
-// import Cinema from './Components/Header/NavComponents/Cinema';
-// import Theaters from './Components/Header/NavComponents/Theaters';
-// import Sports from './Components/Header/NavComponents/Sports';
-// import DetailsPage from './Components/Content/DetailsPage';
-// import { Modal } from 'antd';
-
-import SearchingCities from './Components/Header/SearchingBar/searchingCities';
+import FooterPart from './Components/Footer/FooterPart';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCredentials, setCinemaData, setTheaterData } from './store';
+import axios from 'axios';
 
 import './App.css';
-import FooterPart from './Components/Footer/FooterPart';
-import axios from "axios";
 
-export const  context = createContext({})
+function App() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { cinemaData, theaterData, credentials } = useSelector((state) => state.data);
 
-function App() { 
-  const navigate = useNavigate()
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [isModalVisible, setIsModalVisible] = useState(false); 
-  const [searchResults, setSearchResults] = useState([]); // State for search results
-  const [credentials, setCredentials] = useState([])
-  const [cinemaData, setCinemaData] = useState([])
-  const [theaterData, setTheaterData] = useState([])
-  const [events, setEvents] = useState({})
-  const [activeUser, setActiveUser] = useState({})
-  const memoizedCredentials = useMemo(() => credentials, [credentials]);
-  const memoizedEvents = useMemo(() => events, [events]);
-  const [isAuthorized, setAuthorized] = useState(false)
-  const [isValid, setValid] = useState(true)
+  // Memoize the search results to avoid unnecessary re-renders
+  const memoizedSearchResults = useMemo(() => credentials, [credentials]);
 
-
-  const memoizedSearchResults = useMemo(() => searchResults, [searchResults]);
-
-  useEffect(()=> {
+  // Fetching data from the API on initial load
+  useEffect(() => {
     Promise.all([
       axios.get('http://localhost:3031/users'),
       axios.get('http://localhost:3031/theater'),
       axios.get('http://localhost:3031/cinema')
     ])
-    .then(([usersRes, theaterRes, cinemaRes]) => {
-      setCredentials(usersRes.data)
-      setTheaterData(theaterRes.data)
-      setCinemaData(cinemaRes.data)
-      console.log("Credentials start: ", usersRes.data)
-      if(theaterData){
-        console.log("Theaters: ", theaterData)
-      }
-      if(cinemaData){
-        console.log("Cinema: ", cinemaData)
-      }
-      console.log("Fetched data: ", { usersRes, theaterRes, cinemaRes });
-    
-    })
-    .catch(err => {
-      console.log("Error fetching data: ", err)
-    })
+      .then(([usersRes, theaterRes, cinemaRes]) => {
+        dispatch(setCredentials(usersRes.data));
+        dispatch(setTheaterData(theaterRes.data));
+        dispatch(setCinemaData(cinemaRes.data));
+        console.log('Fetched data: ', { usersRes, theaterRes, cinemaRes });
+      })
+      .catch((err) => {
+        console.log('Error fetching data: ', err);
+      });
+  }, [dispatch]);
 
-  }, [])
-
-  useEffect(()=> {
-    console.log("Credentials after updates: ", credentials)
-  })
+  // Logs credentials and data when they change
+  useEffect(() => {
+    console.log('Credentials after updates: ', credentials);
+  }, [credentials]);
 
   useEffect(() => {
-    setEvents({cinema: [...cinemaData], theater: [...theaterData]})
-    console.log("All events: ", events)
-  }, [cinemaData, theaterData])
+    console.log('Cinema data: ', cinemaData);
+  }, [cinemaData]);
 
-  const handleLogout = useCallback(() => {
-    setIsLoggedIn(false)
-    setUsername("")
-    setPassword("")
-    setActiveUser({})
-  }, [])
+  useEffect(() => {
+    console.log('Theater data: ', theaterData);
+  }, [theaterData]);
 
-  const contextValues = useMemo(() => (
-    {
-      isLoggedIn,
-      setIsLoggedIn,
-      username,
-      setUsername,
-      password,
-      setPassword,
-      error,
-      setError,
-      handleLogout,
-      credentials,
-      events,
-      setCredentials,
-      cinemaData,
-      activeUser,
-      setActiveUser,
-      isAuthorized,
-      setAuthorized,
-      isValid,
-      setValid,
-      setActiveUser
-    }
-
-  ), [ isLoggedIn,
-    username,
-    password,
-    error,
-    credentials,
-    cinemaData,
-    events, 
-    activeUser,
-    isAuthorized,
-    isValid
-   ])
-   useEffect(()=>{
-    console.log(contextValues);
-    console.log("isLoggedin: " , isLoggedIn);
-
-   }, [])
-   useEffect(() => {
-    console.log("Cinema data: ", cinemaData)
-   }, [cinemaData])
-
-   console.log("context: " , contextValues);
-   console.log("isLoggedin: " , isLoggedIn);
-  
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const closeModal = () => {
-    setIsModalVisible(false);
-  };
   return (
-    <div>
-      {/* <Router> */}
     <div className="App">
-      <context.Provider value={contextValues}>
-      <Header 
-        // isLoggedIn={isLoggedIn} 
-        // showLoginModal={showModal} 
-        setSearchResults={setSearchResults}
-      />
-      {/* <SearchingCities setSearchResults={setSearchResults} />  */}
+      <Header setSearchResults={() => {}} /> {/* Handle search result setter logic */}
       <Outlet />
-      </context.Provider>
-      
+      <FooterPart />
     </div>
-  {/* </Router> */}
-
-  <FooterPart />
-  </div>
-);
+  );
 }
 
 export default App;

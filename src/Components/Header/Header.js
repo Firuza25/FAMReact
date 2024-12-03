@@ -4,13 +4,24 @@ import './header.css';
 import { context } from '../../App';
 import SearchBar from './SearchingBar/SearchBar';
 
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store";
+
 
 const Header = () => {
+  const isLoggedIn = useSelector((state) => state.data.isLoggedIn);
+  const dispatch = useDispatch();
 
-  const { handleLogout } = useContext(context)
 
-  const {isLoggedIn} = useContext(context)
+  // const { handleLogout } = useContext(context)
+
+  // const {isLoggedIn} = useContext(context)
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
 
   const navigationButtons = useMemo(() => {
     return (

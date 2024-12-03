@@ -4,9 +4,14 @@ import { context } from "../../App";
 import { Outlet, useNavigate } from "react-router-dom";
 import ProfileMenu from "./ProfileMenu";
 import "./MyProfileContent.css"
+import { useSelector } from "react-redux";
+
 
 const MyProfile = memo(() => {
-    const { activeUser, isLoggedIn } = useContext(context)
+    // const { activeUser, isLoggedIn } = useContext(context)
+    const { activeUser, isLoggedIn } = useSelector(state => state.data);
+
+
     const navigate = useNavigate()
 
     //We must uncomment it later!

@@ -20,6 +20,8 @@ import MyProfile from './Components/Account/MyProfile';
 import MyProfileSettings from './Components/Account/MyProfileSettings';
 import MyTickets from './Components/Account/MyTickets';
 import BuyTicketModal from './Components/Content/BuyTicketModal';
+import store from './store';
+import { Provider } from 'react-redux';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index: true,  // Set `Home` as the default component for `/`
+        index: true,  // Set Home as the default component for /
         element: <Content />,
       },
       {
@@ -109,8 +111,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  
+  <Provider store={store}>
     <RouterProvider router={router} />
+  </Provider>
   
 );
 reportWebVitals();

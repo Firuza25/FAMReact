@@ -2,10 +2,14 @@ import React, { useContext, useState, useEffect } from "react";
 import { context } from "../../App";
 import axios from "axios";
 import { List, Card, message, Button, Modal, InputNumber } from "antd";
+import { useSelector } from "react-redux";
+
 
 
 const MyTickets = () => {
-    const {activeUser, isLoggedIn} = useContext(context)
+    // const {activeUser, isLoggedIn} = useContext(context)
+    const { activeUser, isLoggedIn } = useSelector(state => state.data);
+
     const [tickets, setTickets] = useState([]);
     const [loading, setLoading] = useState(false);
     const [selectedTicket, setSelectedTicket] = useState(null); // To track ticket for return

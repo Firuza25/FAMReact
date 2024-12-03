@@ -1,160 +1,160 @@
 /* Schedule container */
 .schedule-container {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: 1px solid #6d6c6c;
-    padding: 20px;
-    /* background-color: #f9f9f9; */
-    /* border-radius: 10px; */
-    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
-    width: 80%;
-    margin: auto;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #6d6c6c;
+  padding: 20px;
+  /* background-color: #f9f9f9; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+  width: 80%;
+  margin: auto;
 
-  }
-  
-  /* Date styling */
-  .schedule-date {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  /* Info about the theater and city */
-  .schedule-info {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 15px;
-   
-  }
-  
-  /* Container for session times */
-  .sessions-container {
-    display: flex;
-    gap: 15px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  /* Individual session time styling */
-  .schedule-time {
-    padding: 10px 20px;
-    background-color: #923838;
-    color: #fff;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-size: 1rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Ticket icon inside the session time */
-  .ticket-icon {
-    width: 20px;
-    margin-right: 10px;
-  }
-  
-  /* Hover effect on schedule times */
-  .schedule-time:hover {
-    background-color: #45a049;
-  }
+}
 
-  /* Button Styles */
-.back-button {
+/* Date styling */
+.schedule-date {
+  font-size: 1.2rem;
+  font-weight: bold;
   color: #333;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
+  margin-bottom: 10px;
+}
+
+/* Info about the theater and city */
+.schedule-info {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 15px;
+ 
+}
+
+/* Container for session times */
+.sessions-container {
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Individual session time styling */
+.schedule-time {
   padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  background-color: #923838;
+  color: #fff;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  font-weight: bold;
   display: flex;
   align-items: center;
-  gap: 8px; /* Space for the icon and text */
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Ticket icon inside the session time */
+.ticket-icon {
+  width: 20px;
+  margin-right: 10px;
+}
+
+/* Hover effect on schedule times */
+.schedule-time:hover {
+  background-color: #45a049;
+}
+
+/* Button Styles */
+.back-button {
+color: #333;
+border: 1px solid #ccc;
+background-color: #f9f9f9;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s, color 0.3s;
+display: flex;
+align-items: center;
+gap: 8px; /* Space for the icon and text */
 }
 
 .back-button:hover {
-  background-color: #e0e0e0;
-  color: #000;
+background-color: #e0e0e0;
+color: #000;
 }
 
 /* Event Title */
 .event-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 20px 0;
-  text-align: center;
-  color: #222;
+font-size: 2rem;
+font-weight: bold;
+margin: 20px 0;
+text-align: center;
+color: #222;
 }
 
 /* Event Image */
 .event-image {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 20px;
+width: 100%;
+max-height: 400px;
+object-fit: cover;
+border-radius: 8px;
+margin-bottom: 20px;
 }
 
 /* Event Details */
 .event-details {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #444;
-  margin-bottom: 20px;
+font-size: 1.1rem;
+line-height: 1.6;
+color: #444;
+margin-bottom: 20px;
 }
 
 /* Event Data Section */
 .event-data {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+margin-bottom: 20px;
 }
 
 .event-data div {
-  font-size: 1rem;
-  color: #555;
+font-size: 1rem;
+color: #555;
 }
 
 .event-data p {
-  margin: 0;
+margin: 0;
 }
 
 /* Buy Ticket Button */
 .buy-ticket-button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+background-color: #007bff;
+color: white;
+padding: 10px 20px;
+font-size: 1.2rem;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
 }
 
 .buy-ticket-button:hover {
-  background-color: #0056b3;
+background-color: #0056b3;
 }
 
 /* Wrapper for Schedules */
 .schedule-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+margin-top: 20px;
+padding: 20px;
+background-color: #f8f9fa;
+border-radius: 8px;
+box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+position: relative;
 }
