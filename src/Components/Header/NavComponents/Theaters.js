@@ -15,7 +15,7 @@ const Theaters = () => {
           gap: "30px",
           marginTop: "60px",
           flexWrap: "wrap",
-          width: "90%",
+          width: "80%",
         }}
       >
         {theaterData.map((theater) => (

@@ -3,7 +3,7 @@ import { context } from "../../../App";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-
+import "./searchingCities"
 
 const SearchBar = () => {
   const events = useSelector((state) => state.data.events);

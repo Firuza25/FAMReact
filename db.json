@@ -11,7 +11,13 @@
             "ticket": "http://localhost:3031/cinema/1",
             "bookdate": "2024-12-03",
             "bookTime": "10:35",
-            "quantity": 2
+            "quantity": 1
+          },
+          "1733324260147": {
+            "ticket": "http://localhost:3031/cinema/1",
+            "bookdate": "2024-12-04",
+            "bookTime": "19:57:40",
+            "quantity": 3
           }
         }
       }
@@ -28,39 +34,18 @@
       "password": "password5*",
       "name": "Alik"
     },
+
     {
-      "id": "6",
-      "username": "user6",
-      "password": "password6*",
-      "name": "Alina",
-      "data": {
-        "bookings": {
-          "1733251333256": {
-            "ticket": "http://localhost:3031/theaters/3",
-            "bookdate": "2024-12-03",
-            "bookTime": "23:42:13",
-            "quantity": 3
-          }
-        }
-      }
+      "id": "11",
+      "username": "user8",
+      "password": "password8*",
+      "name": "Akoko"
     },
     {
-      "id": "7",
-      "username": "user3",
-      "password": "password4*",
-      "name": "Fiko"
-    },
-    {
-      "id": "8",
-      "username": "user00000000",
-      "password": "password4*",
-      "name": "Makeli"
-    },
-    {
-      "id": "9",
-      "username": "anara",
-      "password": "password12*",
-      "name": "anara"
+      "id": "12",
+      "username": "user17",
+      "password": "password17*",
+      "name": "aaaa"
     }
   ],
   "cinema": [
@@ -79,6 +64,10 @@
           {
             "text": "Привет",
             "user": "user4"
+          },
+          {
+            "text": " grbgr\n",
+            "user": "user1"
           }
         ]
       },
@@ -134,6 +123,14 @@
         "comments": [
           {
             "text": "но можно в цлелом\n",
+            "user": "user1"
+          },
+          {
+            "text": "ggggggg hhh\n",
+            "user": "user6"
+          },
+          {
+            "text": "gtdwgted",
             "user": "user1"
           }
         ]
@@ -257,6 +254,10 @@
           {
             "text": "dwdwe",
             "user": "user1"
+          },
+          {
+            "text": "userjjj",
+            "user": "user14"
           }
         ]
       },

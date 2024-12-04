@@ -5,9 +5,9 @@ const urlsToCache = [
   "/static/css/main.css", 
   "/favicon.ico", 
   "/manifest.json", 
-  "/db.json",
+  // "/db.json",
   "/index.html",
-  "/login-page",
+  // "/login-page",
   "http://localhost:3031/users",
 ];
 

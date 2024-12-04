@@ -37,6 +37,8 @@ const Cinema = () => {
           justifyContent: "center",
           gap: "30px",
           marginTop: "60px",
+          flexWrap: "wrap",
+          width: "80%",
         }}
       >
         {filteredCinemas.map((movie, index) => (
