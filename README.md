@@ -31,4 +31,8 @@ Testing API - проверка API запросов.
 
 JSON-Server - эмуляция серверной базы данных.
 
+<img width="1440" alt="Снимок экрана 2025-02-18 в 10 34 48 PM" src="https://github.com/user-attachments/assets/1aad4fa5-6724-4dd0-9e9c-23152fd20b04" />
+
+<img width="1440" alt="Снимок экрана 2025-02-18 в 10 41 17 PM" src="https://github.com/user-attachments/assets/1b862703-4801-4868-91c7-f41f657294e3" />
+<img width="1440" alt="Снимок экрана 2025-02-18 в 10 41 28 PM" src="https://github.com/user-attachments/assets/c939da3a-d960-4c1b-8be3-29667cc4843e" />
 
