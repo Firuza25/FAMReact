@@ -1,4 +1,4 @@
-<img width="1358" alt="Screenshot 2025-02-23 at 13 29 54" src="https://github.com/user-attachments/assets/400c9a71-21ef-443a-adde-6b2341f4eb51" />![2025-02-24 4 32 52 PM](https://github.com/user-attachments/assets/b026c73e-7de3-4f44-af57-a9a7f169a65c)EventsManager is a web-based application for event search, ticket purchase, and management.
+EventsManager is a web-based application for event search, ticket purchase, and management.
 
 , Functionality
 
@@ -29,6 +29,9 @@ Jest - functional testing.
 Testing API - checking API requests.
 
 JSON-Server is an emulation of a server database.
+
+<img width="1358" alt="Screenshot 2025-02-23 at 13 29 54" src="https://github.com/user-attachments/assets/400c9a71-21ef-443a-adde-6b2341f4eb51" />![2025-02-24 4 32 52 PM](https://github.com/user-attachments/assets/b026c73e-7de3-4f44-af57-a9a7f169a65c)
+
 
 <img width="1440" alt="Снимок экрана 2025-02-18 в 10 34 48 PM" src="https://github.com/user-attachments/assets/1aad4fa5-6724-4dd0-9e9c-23152fd20b04" />
 
