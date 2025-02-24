@@ -30,14 +30,14 @@ Testing API - checking API requests.
 
 JSON-Server is an emulation of a server database.
 
-<img width="1358" alt="Screenshot 2025-02-23 at 13 29 54" src="https://github.com/user-attachments/assets/400c9a71-21ef-443a-adde-6b2341f4eb51" />![2025-02-24 4 32 52 PM](https://github.com/user-attachments/assets/b026c73e-7de3-4f44-af57-a9a7f169a65c)
 
 
 <img width="1440" alt="Снимок экрана 2025-02-18 в 10 34 48 PM" src="https://github.com/user-attachments/assets/1aad4fa5-6724-4dd0-9e9c-23152fd20b04" />
 
 <img width="1440" alt="Снимок экрана 2025-02-18 в 10 41 17 PM" src="https://github.com/user-attachments/assets/1b862703-4801-4868-91c7-f41f657294e3" />
 <img width="1440" alt="Снимок экрана 2025-02-18 в 10 41 28 PM" src="https://github.com/user-attachments/assets/c939da3a-d960-4c1b-8be3-29667cc4843e" />
-![2025-02-24 4 32 52 PM](https://github.com/user-attachments/assets/a2ffabb6-66ce-4f73-9bc3-c5e11e4531ea)
+
+<img width="1358" alt="Screenshot 2025-02-23 at 13 29 54" src="https://github.com/user-attachments/assets/400c9a71-21ef-443a-adde-6b2341f4eb51" />![2025-02-24 4 32 52 PM](https://github.com/user-attachments/assets/b026c73e-7de3-4f44-af57-a9a7f169a65c)
 
 <img width="916" alt="Screenshot 2025-02-23 at 13 28 12" src="https://github.com/user-attachments/assets/f3f23529-a389-4e45-b909-851ae0659b36" />
 
